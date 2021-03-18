@@ -3,7 +3,7 @@ session_start();
 require_once 'dbConfig.php';
 // CRUD Sınıfı
 
-class crud
+class CRUD
 {
     private $db;
     private $dbhost = DBHOST;

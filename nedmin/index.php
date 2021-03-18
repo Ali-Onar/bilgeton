@@ -27,6 +27,14 @@ require_once 'sidebar.php';
             </div>
             <div class="box-body">
                 Paneli soldaki menülerden düzenleyebilirsiniz!
+
+                <?php
+
+                    echo "<pre>";
+                    print_r($_SESSION['admins']);
+                    echo "</pre>";
+
+                ?>
             </div>
             <!-- /.box-body -->
 
