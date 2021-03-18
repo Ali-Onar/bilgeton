@@ -1,5 +1,12 @@
 <?php
 
+session_start();
+
+# Giriş yapılmışsa login'e giremesin.
+if (isset($_SESSION['admins'])) {
+  Header('Location: index.php');
+  exit;
+}
 require_once 'netting/class.crud.php';
 $db = new CRUD();
 
@@ -34,6 +41,7 @@ $db = new CRUD();
       -moz-background-size: cover;
       -o-background-size: cover;
     }
+
     body {
       overflow: hidden;
     }

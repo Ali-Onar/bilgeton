@@ -1,5 +1,9 @@
 <?php
-session_start();
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 require_once 'dbConfig.php';
 // CRUD Sınıfı
 
@@ -31,7 +35,7 @@ class CRUD
     # execute : gelen veri ile DB'deki veriyi karşılaştır
     # fetch : sütuna göre veri çek
     # $row['...'] = $admincek['...']
-    
+
     public function adminsLogin($admins_username, $admins_password)
     {
         try {
