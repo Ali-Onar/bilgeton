@@ -36,16 +36,24 @@ class CRUD
     # fetch : sütuna göre veri çek
     # $row['...'] = $admincek['...']
 
-    public function adminsLogin($admins_username, $admins_password)
+    public function adminsLogin($admins_username, $admins_password, $remember_me)
     {
         try {
 
             $stmt = $this->db->prepare('SELECT * FROM admins WHERE admins_username=? and admins_password=?');
-            $stmt->execute([$admins_username, md5($admins_password)]);
+
+            // Beni Hatırla decrypt başlangıç 
+            if (isset($_COOKIE['adminsLogin'])) {
+                $stmt->execute([$admins_username, md5(openssl_decrypt($admins_password, "AES-128-ECB", "admins_key"))]);
+            } else {
+                $stmt->execute([$admins_username, md5($admins_password)]);
+            }
+            // Beni Hatırla decrypt bitiş 
 
             if ($stmt->rowCount() == 1) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+                # SESSION ATAMASI
                 $_SESSION["admins"] = [
                     "admins_username" => $admins_username,
                     "admins_name" => $row['admins_name'],
@@ -53,6 +61,22 @@ class CRUD
                     "admins_file" => $row['admins_file'],
                     "admins_id" => $row['admins_id']
                 ];
+
+                // Beni Hatırla encrypt Başlangıç
+                # checkbox - Beni hatırla dolu geldiğinde yapılacak işlemler
+                # openssql_encrypt şifrelemesi => data, method, key
+                if (!empty($remember_me) and empty($_COOKIE['adminsLogin'])) {
+                    $admins = [
+                        "admins_username" => $admins_username,
+                        "admins_password" => openssl_encrypt($admins_password, "AES-128-ECB", "admins_key")
+                    ];
+                    setcookie("adminsLogin", json_encode($admins), strtotime("+30 day"), "/");
+                    
+                } else if (empty($remember_me)) {
+                    setcookie("adminsLogin", json_encode($admins), strtotime("-30 day"), "/");
+                }
+                // Beni Hatırla encrypt Bitiş
+
                 return ['status' => TRUE];
             } else {
                 return ['status' => FALSE];

@@ -69,9 +69,18 @@ $db = new CRUD();
 
       <?php
 
+      # test 
+      // echo "<pre>";
+      // print_r(json_decode($_COOKIE['adminsLogin']));
+      // echo "</pre>";
+
+      if (isset($_COOKIE['adminsLogin'])) {
+        $login = json_decode($_COOKIE['adminsLogin']);
+      }
+
       if (isset($_POST['admins_login'])) {
 
-        $result = $db->adminsLogin(htmlspecialchars($_POST['admins_username']), htmlspecialchars($_POST['admins_password']));
+        $result = $db->adminsLogin(htmlspecialchars($_POST['admins_username']), htmlspecialchars($_POST['admins_password']), $_POST['remember_me']);
 
         if ($result['status']) {
           header('Location: index.php');
@@ -91,18 +100,46 @@ $db = new CRUD();
 
       <form action="" method="post">
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Kullanıcı Adınız:" name="admins_username">
+
+          <input type="text" class="form-control" 
+          <?php
+
+            if(isset($_COOKIE['adminsLogin'])) {
+              echo 'value="'.$login->admins_username.'"';
+            }else {
+              echo 'placeholder="Kullanıcı Adınız:"';
+            }
+
+          ?>
+           name="admins_username">
+
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Parolanız:" name="admins_password">
+
+          <input type="password" class="form-control" 
+          <?php
+
+            if(isset($_COOKIE['adminsLogin'])) {
+              echo 'value="'.$login->admins_password.'"';
+            }else {
+              echo 'placeholder="Parolanız:"';
+            }
+
+          ?>
+           name="admins_password">
+
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
           <div class="col-xs-8">
             <div class="checkbox icheck">
               <label>
-                <input type="checkbox"> Beni Hatırla
+
+                <input type="checkbox" <?php 
+                  if(isset($_COOKIE['adminsLogin'])) { echo 'checked'; }
+                ?> name="remember_me"> Beni Hatırla
+
               </label>
             </div>
           </div>
