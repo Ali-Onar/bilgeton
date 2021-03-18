@@ -1,3 +1,10 @@
+<?php
+
+require_once 'netting/class.crud.php';
+$db = new crud();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
