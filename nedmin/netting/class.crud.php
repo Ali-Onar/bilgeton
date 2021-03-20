@@ -40,13 +40,13 @@ class CRUD
     {
         try {
 
-            $stmt = $this->db->prepare('SELECT * FROM admins WHERE admins_username=? and admins_password=?');
+            $stmt = $this->db->prepare('SELECT * FROM admins WHERE admins_username=? and admins_password=? and admins_status=?');
 
             // Beni Hatırla decrypt başlangıç 
             if (isset($_COOKIE['adminsLogin'])) {
-                $stmt->execute([$admins_username, md5(openssl_decrypt($admins_password, "AES-128-ECB", "admins_key"))]);
+                $stmt->execute([$admins_username, md5(openssl_decrypt($admins_password, "AES-128-ECB", "admins_key")), 1]);
             } else {
-                $stmt->execute([$admins_username, md5($admins_password)]);
+                $stmt->execute([$admins_username, md5($admins_password), 1]);
             }
             // Beni Hatırla decrypt bitiş 
 
@@ -71,7 +71,6 @@ class CRUD
                         "admins_password" => openssl_encrypt($admins_password, "AES-128-ECB", "admins_key")
                     ];
                     setcookie("adminsLogin", json_encode($admins), strtotime("+30 day"), "/");
-                    
                 } else if (empty($remember_me)) {
                     setcookie("adminsLogin", json_encode($admins), strtotime("-30 day"), "/");
                 }
@@ -83,6 +82,19 @@ class CRUD
             }
         } catch (Exception $e) {
             return ['status' => FALSE, 'error' => $e->getMessage()];
+        }
+    }
+
+    public function read($table)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM $table");
+            $stmt->execute();
+            return $stmt;
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            return false;
         }
     }
 }

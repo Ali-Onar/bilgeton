@@ -7,7 +7,7 @@ if (!isset($_SESSION['admins']) && isset ($_COOKIE['adminsLogin'])) {
 
     $result = $db->adminsLogin($adminsLogin->admins_username, $adminsLogin->admins_password, TRUE);
 
-    if ($sonuc['status']) {
+    if ($result['status']) {
         header("Location: index.php");
         exit;
     }

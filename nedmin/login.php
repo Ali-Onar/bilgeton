@@ -80,7 +80,9 @@ $db = new CRUD();
 
       if (isset($_POST['admins_login'])) {
 
-        $result = $db->adminsLogin(htmlspecialchars($_POST['admins_username']), htmlspecialchars($_POST['admins_password']), $_POST['remember_me']);
+        $rememberMe = isset($_POST['remember_me']) ? $_POST['remember_me']: '';
+
+        $result = $db->adminsLogin(htmlspecialchars($_POST['admins_username']), htmlspecialchars($_POST['admins_password']), $rememberMe);
 
         if ($result['status']) {
           header('Location: index.php');

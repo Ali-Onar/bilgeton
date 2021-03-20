@@ -1,3 +1,4 @@
+
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
 
@@ -26,14 +27,13 @@
             <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
             <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+                <a href="#"><i class="fa fa-link"></i> <span>Yönetim</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                    <li><a href="admins.php"><i class="fa fa-user"></i>Yöneticiler</a></li>
                 </ul>
             </li>
         </ul>
