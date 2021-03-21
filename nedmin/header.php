@@ -1,6 +1,13 @@
 <?php
 session_start();
+
 require_once 'netting/setConfig.php';
+require_once ('function/function.php');
+
+$value1 = basename($_SERVER['PHP_SELF']);
+$value2 = basename(__FILE__);
+accessBlock($value1, $value2);
+
 ?>
 
 <!DOCTYPE html>

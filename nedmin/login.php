@@ -68,83 +68,36 @@ $db = new CRUD();
       <p class="login-box-msg">Giriş yapmak için bilgileri giriniz</p>
 
       <?php
-
-      # test 
-      // echo "<pre>";
-      // print_r(json_decode($_COOKIE['adminsLogin']));
-      // echo "</pre>";
-
-      if (isset($_COOKIE['adminsLogin'])) {
-        $login = json_decode($_COOKIE['adminsLogin']);
-      }
-
+      // Form işlemleri
       if (isset($_POST['admins_login'])) {
 
-        $rememberMe = isset($_POST['remember_me']) ? $_POST['remember_me']: '';
-
-        $result = $db->adminsLogin(htmlspecialchars($_POST['admins_username']), htmlspecialchars($_POST['admins_password']), $rememberMe);
+        $result = $db->adminsLogin(htmlspecialchars($_POST['admins_username']), htmlspecialchars($_POST['admins_password']));
 
         if ($result['status']) {
           header('Location: index.php');
           exit;
         } else {
-
       ?>
           <div class="alert alert-danger">
             Kullanıcı adı veya parola hatalı!
           </div>
       <?php
-
         }
       }
-
       ?>
 
       <form action="" method="post">
         <div class="form-group has-feedback">
-
-          <input type="text" class="form-control" 
-          <?php
-
-            if(isset($_COOKIE['adminsLogin'])) {
-              echo 'value="'.$login->admins_username.'"';
-            }else {
-              echo 'placeholder="Kullanıcı Adınız:"';
-            }
-
-          ?>
-           name="admins_username">
-
+          <input type="text" class="form-control" placeholder="Kullanıcı Adınız:" name="admins_username">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
+
         <div class="form-group has-feedback">
-
-          <input type="password" class="form-control" 
-          <?php
-
-            if(isset($_COOKIE['adminsLogin'])) {
-              echo 'value="'.$login->admins_password.'"';
-            }else {
-              echo 'placeholder="Parolanız:"';
-            }
-
-          ?>
-           name="admins_password">
-
+          <input type="password" class="form-control" placeholder="Parolanız:" name="admins_password">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
-          <div class="col-xs-8">
-            <div class="checkbox icheck">
-              <label>
 
-                <input type="checkbox" <?php 
-                  if(isset($_COOKIE['adminsLogin'])) { echo 'checked'; }
-                ?> name="remember_me"> Beni Hatırla
-
-              </label>
-            </div>
-          </div>
           <!-- /.col -->
           <div class="col-xs-4">
             <button type="submit" class="btn btn-primary btn-block btn-flat" name="admins_login">Giriş Yap</button>
