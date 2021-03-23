@@ -19,7 +19,8 @@ class CRUD
     function __construct()
     {
         try {
-            $this->db = new PDO('mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname . ';charset=utf8',
+            $this->db = new PDO(
+                'mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname . ';charset=utf8',
                 $this->dbuser,
                 $this->dbpassword
             );
@@ -30,13 +31,43 @@ class CRUD
         }
     }
 
-    public function adminInsert($admins_username, $admins_name, $admins_surname, $admins_password, $admins_status) {
+    // DB'den gelen anahtar değerlerini birleştirme metodu
+    public function addValue($argse)
+    {
+        $values = implode(',', array_map(
+            function ($item) {
+                return $item . '=?';
+            },
+            array_keys($argse)
+        ));
+        return $values;
+    }
+
+    // Veri Ekleme Metodu
+    public function insert($table, $values, $options = [])
+    {
+        try {
+            unset($values[$options['form_name']]);
+            // echo "<pre>";
+            // print_r($values);
+            // exit;
+
+            $stmt = $this->db->prepare("INSERT INTO $table SET {$this->addValue($values)}");
+            $stmt->execute(array_values($values));
+
+            return ['status' => TRUE];
+        } catch (Exception $e) {
+            return ['status' => FALSE, 'error' => $e->getMessage()];
+        }
+    }
+
+    public function adminInsert($admins_username, $admins_name, $admins_surname, $admins_password, $admins_status)
+    {
         try {
             $stmt = $this->db->prepare("INSERT INTO admins SET admins_username=?, admins_name=?, admins_surname=?, admins_password=?, admins_status=?");
             $stmt->execute([$admins_username, $admins_name, $admins_surname, md5($admins_password), $admins_status]);
 
             return ['status' => TRUE];
-
         } catch (Exception $e) {
             return ['status' => FALSE, 'error' => $e->getMessage()];
         }
@@ -52,13 +83,14 @@ class CRUD
 
             $stmt = $this->db->prepare('SELECT * FROM admins WHERE admins_username=? and admins_password=?');
             $stmt->execute([
-                $admins_username, 
-                md5($admins_password)]);
+                $admins_username,
+                md5($admins_password)
+            ]);
 
             if ($stmt->rowCount() == 1) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                if($row['admins_status'] == 0) {
+                if ($row['admins_status'] == 0) {
                     return ['status' => FALSE];
                     exit;
                 }
@@ -75,7 +107,6 @@ class CRUD
             } else {
                 return ['status' => FALSE];
             }
-            
         } catch (Exception $e) {
             return ['status' => FALSE, 'error' => $e->getMessage()];
         }
@@ -93,4 +124,3 @@ class CRUD
         }
     }
 }
-
