@@ -48,6 +48,10 @@ class CRUD
     {
         try {
             unset($values[$options['form_name']]);
+
+            if ($options['password']) {
+                $values[$options['password']] = md5($values[$options['password']]);
+            }
             // echo "<pre>";
             // print_r($values);
             // exit;

@@ -22,7 +22,7 @@ require_once 'sidebar.php';
 
                     <?php
                     if (isset($_POST['admins_insert'])) {
-                        $result = $db->insert('admins',$_POST, ["form_name" => "admins_insert"]);
+                        $result = $db->insert('admins',$_POST, ["form_name" => "admins_insert", "password" => "admins_password"]);
 
                         if ($result['status']) { ?>
                             <div class="alert alert-success">Kayıt Başarılı</div>
