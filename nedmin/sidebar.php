@@ -33,6 +33,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li><a href="users.php"><i class="fa fa-user"></i>Kullanıcılar</a></li>
                     <li><a href="admins.php"><i class="fa fa-user"></i>Yöneticiler</a></li>
                 </ul>
             </li>

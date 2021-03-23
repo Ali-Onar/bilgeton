@@ -11,18 +11,18 @@ require_once 'sidebar.php';
     <!-- Main content -->
     <section class="content">
 
-        <?php if (isset($_GET['adminsInsert'])) {  ?>
+        <?php if (isset($_GET['usersInsert'])) {  ?>
 
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Yönetici Ekle</h3>
+                    <h3 class="box-title">Kullanıcı Ekle</h3>
                     <hr>
                 </div>
                 <div class="box-body">
 
                     <?php
-                    if (isset($_POST['admins_insert'])) {
-                        $result = $db->insert('admins',$_POST, ["form_name" => "admins_insert"]);
+                    if (isset($_POST['users_insert'])) {
+                        $result = $db->insert('users',$_POST, ["form_name" => "users_insert"]);
 
                         if ($result['status']) { ?>
                             <div class="alert alert-success">Kayıt Başarılı</div>
@@ -37,10 +37,10 @@ require_once 'sidebar.php';
                     <form method="POST">
 
                         <div class="form-group">
-                            <label>Yönetici Adı</label>
+                            <label>Mail Adresi</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input type="text" name="admins_username" required="" class="form-control">
+                                    <input type="text" name="users_mail" required="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@ require_once 'sidebar.php';
                             <label>İsim</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input type="text" name="admins_name" required="" class="form-control">
+                                    <input type="text" name="users_name" required="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@ require_once 'sidebar.php';
                             <label>Soyisim</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input type="text" name="admins_surname" required="" class="form-control">
+                                    <input type="text" name="users_surname" required="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@ require_once 'sidebar.php';
                             <label>Parola</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input type="password" name="admins_password" required="" class="form-control">
+                                    <input type="password" name="users_password" required="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@ require_once 'sidebar.php';
                             <label>Durum</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <select class="form-control" name="admins_status">
+                                    <select class="form-control" name="users_status">
                                         <option value="1">Aktif</option>
                                         <option value="0">Pafis</option>
                                     </select>
@@ -80,7 +80,7 @@ require_once 'sidebar.php';
                             </div>
                         </div>
                         <div align="right" class="box-footer">
-                            <button type="submit" class="btn btn-primary" name="admins_insert">Kaydet</button>
+                            <button type="submit" class="btn btn-primary" name="users_insert">Kaydet</button>
                         </div>
 
                     </form>
@@ -92,9 +92,9 @@ require_once 'sidebar.php';
         <!-- Default box -->
         <div class="box box-primary">
             <div class="box-header">
-                <h3 class="box-title">Yöneticiler</h3>
+                <h3 class="box-title">Kullanıcılar</h3>
                 <div align="right">
-                    <a href="?adminsInsert=true"><button class="btn btn-success">Yeni Ekle</button></a>
+                    <a href="?usersInsert=true"><button class="btn btn-success">Yeni Ekle</button></a>
                 </div>
             </div>
             <!-- /.box-header -->
@@ -103,7 +103,7 @@ require_once 'sidebar.php';
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Kullanıcı Adı</th>
+                            <th>Mail</th>
                             <th>Ad Soyad</th>
                             <th>Durum</th>
                             <th>Düzenle</th>
@@ -112,17 +112,17 @@ require_once 'sidebar.php';
                     </thead>
                     <tbody>
                         <?php
-                        $sql = $db->read("admins");
+                        $sql = $db->read("users");
                         $say = 1;
 
                         while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                             <tr>
                                 <td><?php echo $say++; ?></td>
-                                <td><?php echo $row['admins_username']; ?></td>
-                                <td><?php echo $row['admins_name'] . " " . $row['admins_surname']; ?></td>
+                                <td><?php echo $row['users_mail']; ?></td>
+                                <td><?php echo $row['users_name'] . " " . $row['users_surname']; ?></td>
                                 <td><?php
-                                    if ($row['admins_status'] == 1) {
+                                    if ($row['users_status'] == 1) {
                                         echo "aktif";
                                     } else {
                                         echo "pasif";
