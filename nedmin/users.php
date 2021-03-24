@@ -22,20 +22,32 @@ require_once 'sidebar.php';
 
                     <?php
                     if (isset($_POST['users_insert'])) {
-                        $result = $db->insert('users',$_POST, ["form_name" => "users_insert", "password" => "users_password"]);
+                        $result = $db->insert('users', $_POST, [
+                            "form_name" => "users_insert",
+                            "password" => "users_password",
+                            "dir" => "users",
+                            "file_name" => "users_file"
+                        ]);
 
                         if ($result['status']) { ?>
-                            <div class="alert alert-success">Kayıt Başarılı</div>
+                            <div class="alert alert-success">Kayıt Başarılı.</div>
                         <?php
                         } else { ?>
-                            <div class="alert alert-danger">Kayıt Başarısız</div>
+                            <div class="alert alert-danger">Kayıt Başarısız. <?php echo $result['error'] ?></div>
                     <?php
                         }
                     }
                     ?>
 
-                    <form method="POST">
-
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Resim Seç</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="file" name="users_file" required="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label>Mail Adresi</label>
                             <div class="row">

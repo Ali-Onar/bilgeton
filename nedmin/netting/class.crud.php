@@ -47,19 +47,48 @@ class CRUD
     public function insert($table, $values, $options = [])
     {
         try {
-            unset($values[$options['form_name']]);
 
-            if ($options['password']) {
+            if (!empty($_FILES[$options['file_name']]['name'])) {
+
+                try {
+                    $allowedExtensions = ['jpg', 'png', 'ico', 'jpge'];
+                    $ext = strtolower(substr($_FILES[$options['file_name']]['name'], strpos($_FILES[$options['file_name']]['name'], '.') + 1));
+                    
+                    if (in_array($ext, $allowedExtensions) === false) {
+                        throw new Exception('Bu dosya türü kabul edilmemektedir...');
+                    }
+
+                    if ($_FILES[$options['file_name']]['size'] > 1048576) {
+                        throw new Exception('Dosya boyutu çok büyük...');
+                    }
+
+                    $tmp_name = $_FILES[$options['file_name']]['tmp_name'];
+                    $name = uniqid().".".$ext;
+
+                    if (!@move_uploaded_file($tmp_name, "dimg/{$options['dir']}/$name")) {
+                        throw new Exception('Dosya yükleme hatası...');
+                    }
+
+                    $values += [$options['file_name'] => $name];
+
+                } 
+                catch (Exception $e) {
+                    return ['status' => FALSE, 'error' => $e->getMessage()];
+                }
+            }
+
+            // parolayı şifrele
+            if (isset($options['password'])) {
                 $values[$options['password']] = md5($values[$options['password']]);
             }
-            // echo "<pre>";
-            // print_r($values);
-            // exit;
+            // buton name sil
+            unset($values[$options['form_name']]);
 
             $stmt = $this->db->prepare("INSERT INTO $table SET {$this->addValue($values)}");
             $stmt->execute(array_values($values));
 
             return ['status' => TRUE];
+
         } catch (Exception $e) {
             return ['status' => FALSE, 'error' => $e->getMessage()];
         }
