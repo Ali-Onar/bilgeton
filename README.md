@@ -9,10 +9,10 @@ Bu proje Kodluyoruz & Vivense PHP Yetenek Eğitim Kampı için hazırlanmaktadı
 3- Quizler oluşturup diğer kullanıcılar ile beraber paylaşabilecekler.
 
 ## Tema şablonu: Reveal -  (Lisansı satın alınmıştır)
-[Business Directory & Listings HTML Template] (https://themeforest.net/item/reveal-business-directory-listings-html-template/25507058)
+- [Business Directory & Listings HTML Template](https://themeforest.net/item/reveal-business-directory-listings-html-template/25507058)
 
 ## Admin paneli (Ücretsiz Dağıtım)
-[AdminLTE] (https://github.com/ColorlibHQ/AdminLTE)
+- [AdminLTE](https://github.com/ColorlibHQ/AdminLTE)
 
 ## Kullanılan Teknolojiler: 
 Temalar bootstrap üzerine kurulmuş olup proje responsive uyumludur. 
