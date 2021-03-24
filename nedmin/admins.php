@@ -99,7 +99,76 @@ require_once 'sidebar.php';
                 </div>
             </div>
 
-        <?php }  ?>
+        <?php } elseif (isset($_GET['adminsUpdate'])) {  ?>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Yönetici Düzenle</h3>
+                    <hr>
+                </div>
+                <div class="box-body">
+
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Resim Seç</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="file" name="admins_file" required="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Yönetici Adı</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="text" name="admins_username" required="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>İsim</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="text" name="admins_name" required="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Soyisim</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="text" name="admins_surname" required="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Parola</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="password" name="admins_password" required="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Durum</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <select class="form-control" name="admins_status">
+                                        <option value="1">Aktif</option>
+                                        <option value="0">Pafis</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div align="right" class="box-footer">
+                            <button type="submit" class="btn btn-primary" name="admins_insert">Kaydet</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        <?php } ?>
 
         <!-- Default box -->
         <div class="box box-primary">
@@ -118,8 +187,8 @@ require_once 'sidebar.php';
                             <th>Kullanıcı Adı</th>
                             <th>Ad Soyad</th>
                             <th>Durum</th>
-                            <th>Düzenle</th>
-                            <th>Sil</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -140,7 +209,7 @@ require_once 'sidebar.php';
                                         echo "pasif";
                                     }
                                     ?></td>
-                                <td align="center"><i class="fa fa-pencil-square"></i></td>
+                                <td align="center"><a href="?adminsUpdate=true&admins_id=<?php echo $row['admins_id']; ?>"><i class="fa fa-pencil-square"></i></a></td>
                                 <td align="center"><i class="fa fa-trash-o"></i></td>
                             </tr>
                         <?php } ?>
