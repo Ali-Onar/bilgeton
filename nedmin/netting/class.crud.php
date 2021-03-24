@@ -50,31 +50,19 @@ class CRUD
 
             if (!empty($_FILES[$options['file_name']]['name'])) {
 
-                try {
-                    $allowedExtensions = ['jpg', 'png', 'ico', 'jpge'];
-                    $ext = strtolower(substr($_FILES[$options['file_name']]['name'], strpos($_FILES[$options['file_name']]['name'], '.') + 1));
-                    
-                    if (in_array($ext, $allowedExtensions) === false) {
-                        throw new Exception('Bu dosya türü kabul edilmemektedir...');
-                    }
+                $name_y = $this->imageUpload(
+                    $_FILES[$options['file_name']]['name'],
+                    $_FILES[$options['file_name']]['size'],
+                    $_FILES[$options['file_name']]['tmp_name'],
+                    $options['dir']
+                );
 
-                    if ($_FILES[$options['file_name']]['size'] > 1048576) {
-                        throw new Exception('Dosya boyutu çok büyük...');
-                    }
+                // resim dosyasının ismini ekle
+                $values += [$options['file_name'] => $name_y];
 
-                    $tmp_name = $_FILES[$options['file_name']]['tmp_name'];
-                    $name = uniqid().".".$ext;
+                // print_r($values);
+                // exit;
 
-                    if (!@move_uploaded_file($tmp_name, "dimg/{$options['dir']}/$name")) {
-                        throw new Exception('Dosya yükleme hatası...');
-                    }
-
-                    $values += [$options['file_name'] => $name];
-
-                } 
-                catch (Exception $e) {
-                    return ['status' => FALSE, 'error' => $e->getMessage()];
-                }
             }
 
             // parolayı şifrele
@@ -88,7 +76,81 @@ class CRUD
             $stmt->execute(array_values($values));
 
             return ['status' => TRUE];
+        } catch (Exception $e) {
+            return ['status' => FALSE, 'error' => $e->getMessage()];
+        }
+    }
+    // Veri Güncelleme Metodu
+    public function update($table, $values, $options = [])
+    {
+        try {
 
+            if (!empty($_FILES[$options['file_name']]['name'])) {
+
+                $name_y = $this->imageUpload(
+                    $_FILES[$options['file_name']]['name'],
+                    $_FILES[$options['file_name']]['size'],
+                    $_FILES[$options['file_name']]['tmp_name'],
+                    $options['dir']
+                );
+
+                // resim dosyasının ismini ekle
+                $values += [$options['file_name'] => $name_y];
+
+                // print_r($values);
+                // exit;
+
+            }
+
+            // parolayı şifrele
+            if (isset($options['password'])) {
+                $values[$options['password']] = md5($values[$options['password']]);
+            }
+            // valuesExecute ekstra admins_id için
+            $columns_id = $values[$options['columns']];
+            unset($values[$options['form_name']]);
+            unset($values[$options['columns']]);
+
+            $valuesExecute = $values;
+            $valuesExecute += [$options['columns'] => $columns_id];
+
+            // echo "<pre>";
+            // print_r($values);
+            // echo "<pre>";
+            // print_r($valuesExecute);
+            // exit;
+
+            $stmt = $this->db->prepare("UPDATE $table SET {$this->addValue($values)} WHERE {$options['columns']}=?");
+            $stmt->execute(array_values($valuesExecute));
+
+            return ['status' => TRUE];
+        } catch (Exception $e) {
+            return ['status' => FALSE, 'error' => $e->getMessage()];
+        }
+    }
+
+    public function imageUpload($name, $size, $tmp_name, $dir)
+    {
+        try {
+            $allowedExtensions = ['jpg', 'png', 'ico', 'jpge'];
+            $ext = strtolower(substr($name, strpos($name, '.') + 1));
+
+            if (in_array($ext, $allowedExtensions) === false) {
+                throw new Exception('Bu dosya türü kabul edilmemektedir...');
+            }
+
+            if ($size > 1048576) {
+                throw new Exception('Dosya boyutu çok büyük...');
+            }
+
+            $name_y = uniqid() . "." . $ext;
+
+            if (!@move_uploaded_file($tmp_name, "dimg/$dir/$name_y")) {
+                throw new Exception('Dosya yükleme hatası...');
+            }
+
+            // resim dosyasının adını döndür
+            return $name_y;
         } catch (Exception $e) {
             return ['status' => FALSE, 'error' => $e->getMessage()];
         }
@@ -145,6 +207,7 @@ class CRUD
         }
     }
 
+    // veri okuma
     public function read($table)
     {
         try {
@@ -154,6 +217,18 @@ class CRUD
         } catch (Exception $e) {
             echo $e->getMessage();
             return false;
+        }
+    }
+
+    // veri çekme
+    public function wread($table, $columns, $values, $options = [])
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM $table WHERE $columns=?");
+            $stmt->execute([htmlspecialchars($values)]);
+            return $stmt;
+        } catch (Exception $e) {
+            return ['status' => false, 'error' => $e->getMessage()];
         }
     }
 }

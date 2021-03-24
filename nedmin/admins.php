@@ -99,7 +99,10 @@ require_once 'sidebar.php';
                 </div>
             </div>
 
-        <?php } elseif (isset($_GET['adminsUpdate'])) {  ?>
+        <?php } elseif (isset($_GET['adminsUpdate'])) {
+
+
+        ?>
 
             <div class="box box-primary">
                 <div class="box-header">
@@ -108,12 +111,45 @@ require_once 'sidebar.php';
                 </div>
                 <div class="box-body">
 
+                    <?php
+                    if (isset($_POST['admins_update'])) {
+                        $result = $db->update('admins', $_POST, [
+                            "form_name" => "admins_update",
+                            "password" => "admins_password",
+                            "dir" => "admins",
+                            "file_name" => "admins_file",
+                            "columns" => "admins_id"
+                        ]);
+
+                        if ($result['status']) { ?>
+                            <div class="alert alert-success">Kayıt Başarılı.</div>
+                        <?php
+                        } else { ?>
+                            <div class="alert alert-danger">Kayıt Başarısız. <?php echo $result['error'] ?></div>
+                    <?php
+                        }
+                    }
+
+                    $sql = $db->wread("admins", "admins_id", $_GET['admins_id']);
+                    $row = $sql->fetch(PDO::FETCH_ASSOC);
+                    ?>
+
                     <form method="POST" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label>Yüklü Resim</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <img src="dimg/admins/<?php echo $row['admins_file'] ?>">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label>Resim Seç</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input type="file" name="admins_file" required="" class="form-control">
+                                    <input type="file" name="admins_file" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -121,7 +157,7 @@ require_once 'sidebar.php';
                             <label>Yönetici Adı</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input type="text" name="admins_username" required="" class="form-control">
+                                    <input type="text" name="admins_username" required="" value="<?php echo $row['admins_username'] ?>" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -129,7 +165,7 @@ require_once 'sidebar.php';
                             <label>İsim</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input type="text" name="admins_name" required="" class="form-control">
+                                    <input type="text" name="admins_name" required="" value="<?php echo $row['admins_name'] ?>" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -137,7 +173,7 @@ require_once 'sidebar.php';
                             <label>Soyisim</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input type="text" name="admins_surname" required="" class="form-control">
+                                    <input type="text" name="admins_surname" required="" value="<?php echo $row['admins_surname'] ?>" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -145,7 +181,7 @@ require_once 'sidebar.php';
                             <label>Parola</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input type="password" name="admins_password" required="" class="form-control">
+                                    <input type="password" name="admins_password" value="<?php echo $row['admins_password'] ?>" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -154,14 +190,17 @@ require_once 'sidebar.php';
                             <div class="row">
                                 <div class="col-xs-12">
                                     <select class="form-control" name="admins_status">
-                                        <option value="1">Aktif</option>
-                                        <option value="0">Pafis</option>
+                                        <option <?php echo $row['admins_status'] == 1 ? 'selected' : '' ?> value="1">Aktif</option>
+                                        <option <?php echo $row['admins_status'] == 0 ? 'selected' : '' ?> value="0">Pafis</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
+
+                        <input type="hidden" name="admins_id" value="<?php echo $row['admins_id']; ?>">
+
                         <div align="right" class="box-footer">
-                            <button type="submit" class="btn btn-primary" name="admins_insert">Kaydet</button>
+                            <button type="submit" class="btn btn-primary" name="admins_update">Düzenlemeyi Kaydet</button>
                         </div>
 
                     </form>
