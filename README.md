@@ -8,10 +8,10 @@ Bu proje Kodluyoruz & Vivense PHP Yetenek Eğitim Kampı için hazırlanmaktadı
 2- Site içerisinde bulunan CV şablonlarından kendilerine göre olanı seçip doldurduktan sonra PDF çıktısı alabilecekler.
 3- Quizler oluşturup diğer kullanıcılar ile beraber paylaşabilecekler.
 
-## Tema şablonu: Reveal -  (Lisansı satın alınmıştır)
+## Tema şablonu
 - [Business Directory & Listings HTML Template](https://themeforest.net/item/reveal-business-directory-listings-html-template/25507058)
 
-## Admin paneli (Ücretsiz Dağıtım)
+## Admin paneli
 - [AdminLTE](https://github.com/ColorlibHQ/AdminLTE)
 
 ## Kullanılan Teknolojiler: 
