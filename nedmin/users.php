@@ -99,7 +99,115 @@ require_once 'sidebar.php';
                 </div>
             </div>
 
-        <?php }  ?>
+        <?php } elseif (isset($_GET['usersUpdate'])) { ?>
+
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Kullanıcı Düzenleme</h3>
+                    <hr>
+                </div>
+                <div class="box-body">
+
+                    <?php
+                    if (isset($_POST['users_update'])) {
+                        $result = $db->update('users', $_POST, [
+                            "form_name" => "users_insert",
+                            "password" => "users_password",
+                            "dir" => "users",
+                            "file_name" => "users_file",
+                            "columns" => "users_id",
+                            "file_delete" => "delete_image"
+                        ]);
+
+                        if ($result['status']) { ?>
+                            <div class="alert alert-success">Kayıt Başarılı.</div>
+                        <?php
+                        } else { ?>
+                            <div class="alert alert-danger">Kayıt Başarısız. <?php echo $result['error'] ?></div>
+                    <?php
+                        }
+                    }
+                    $sql = $db->wread("users", "users_id", $_GET['users_id']);
+                    $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+                    ?>
+
+                    <form method="POST" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label>Resim Seç</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <img src="dimg/users/<?php echo $row['users_file'] ?>">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Resim Seç</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="file" name="users_file" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mail Adresi</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="text" name="users_mail" required="" value="<?php echo $row['users_mail'] ?>" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>İsim</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="text" name="users_name" required="" value="<?php echo $row['users_name'] ?>" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Soyisim</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="text" name="users_surname" required="" value="<?php echo $row['users_surname'] ?>" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Parola</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="password" name="users_password" value="<?php echo $row['users_password'] ?>" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Durum</label>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <select class="form-control" name="users_status">
+                                        <option <?php echo $row['users_status'] == 1 ? 'selected' : '' ?> value="1">Aktif</option>
+                                        <option <?php echo $row['users_status'] == 0 ? 'selected' : '' ?> value="0">Pafis</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="users_id" value="<?php echo $row['users_id']; ?>">
+                        <input type="hidden" name="delete_image" value="<?php echo $row['users_file']; ?>">
+
+                        <div align="right" class="box-footer">
+                            <button type="submit" class="btn btn-primary" name="users_update">Düzenlemeyi Kaydet</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        <?php } ?>
 
         <!-- Default box -->
         <div class="box box-primary">
@@ -140,7 +248,7 @@ require_once 'sidebar.php';
                                         echo "pasif";
                                     }
                                     ?></td>
-                                <td align="center"><i class="fa fa-pencil-square"></i></td>
+                                <td align="center"><a href="?usersUpdate=true&users_id=<?php echo $row['users_id']; ?>"><i class="fa fa-pencil-square"></i></a></td>
                                 <td align="center"><i class="fa fa-trash-o"></i></td>
                             </tr>
                         <?php } ?>

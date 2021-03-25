@@ -2,11 +2,14 @@
 session_start();
 
 require_once 'netting/setConfig.php';
-require_once ('function/function.php');
+require_once('function/function.php');
 
 $value1 = basename($_SERVER['PHP_SELF']);
 $value2 = basename(__FILE__);
 accessBlock($value1, $value2);
+
+$sql = $db->wread("admins", "admins_id", $_SESSION['admins']['admins_id']);
+$row = $sql->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -98,19 +101,19 @@ desired effect
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <!-- The user image in the navbar-->
-                <img src="dimg/admins/<?php echo $_SESSION['admins']['admins_file']; ?>" class="user-image" alt="User Image">
+                <img src="dimg/admins/<?php echo $row['admins_file']; ?>" class="user-image" alt="User Image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs">
-                  <?php echo $_SESSION['admins']['admins_name'] . " " . $_SESSION['admins']['admins_surname']; ?>
+                  <?php echo $row['admins_name'] . " " . $row['admins_surname']; ?>
                 </span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
                 <li class="user-header">
-                  <img src="dimg/admins/<?php echo $_SESSION['admins']['admins_file']; ?>" class="img-circle" alt="User Image">
+                  <img src="dimg/admins/<?php echo $row['admins_file']; ?>" class="img-circle" alt="User Image">
 
                   <p>
-                    <?php echo $_SESSION['admins']['admins_name'] . " " . $_SESSION['admins']['admins_surname']; ?>
+                  <?php echo $row['admins_name'] . " " . $row['admins_surname']; ?>
                     <small>Yönetici</small>
                   </p>
                 </li>

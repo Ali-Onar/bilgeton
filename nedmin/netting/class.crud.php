@@ -91,16 +91,19 @@ class CRUD
                     $_FILES[$options['file_name']]['name'],
                     $_FILES[$options['file_name']]['size'],
                     $_FILES[$options['file_name']]['tmp_name'],
-                    $options['dir']
+                    $options['dir'],
+                    $values[$options['file_delete']]
                 );
 
                 // resim dosyasının ismini ekle
                 $values += [$options['file_name'] => $name_y];
-
                 // print_r($values);
                 // exit;
 
+
             }
+            // Eski dosya değerini sil
+            unset($values[$options['file_delete']]);
 
             // parolayı şifrele
             if (isset($options['password'])) {
@@ -129,7 +132,7 @@ class CRUD
         }
     }
 
-    public function imageUpload($name, $size, $tmp_name, $dir)
+    public function imageUpload($name, $size, $tmp_name, $dir, $file_delete = NULL)
     {
         try {
             $allowedExtensions = ['jpg', 'png', 'ico', 'jpge'];
@@ -149,6 +152,9 @@ class CRUD
                 throw new Exception('Dosya yükleme hatası...');
             }
 
+            if (!empty($file_delete)) {
+                unlink("dimg/$dir/$file_delete");
+            }
             // resim dosyasının adını döndür
             return $name_y;
         } catch (Exception $e) {
@@ -192,10 +198,10 @@ class CRUD
 
                 # SESSION ATAMASI
                 $_SESSION["admins"] = [
-                    "admins_username" => $admins_username,
-                    "admins_name" => $row['admins_name'],
-                    "admins_surname" => $row['admins_surname'],
-                    "admins_file" => $row['admins_file'],
+                    // "admins_username" => $admins_username,
+                    // "admins_name" => $row['admins_name'],
+                    // "admins_surname" => $row['admins_surname'],
+                    // "admins_file" => $row['admins_file'],
                     "admins_id" => $row['admins_id']
                 ];
                 return ['status' => TRUE];

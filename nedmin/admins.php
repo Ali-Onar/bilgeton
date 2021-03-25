@@ -118,7 +118,8 @@ require_once 'sidebar.php';
                             "password" => "admins_password",
                             "dir" => "admins",
                             "file_name" => "admins_file",
-                            "columns" => "admins_id"
+                            "columns" => "admins_id",
+                            "file_delete" => "delete_image"
                         ]);
 
                         if ($result['status']) { ?>
@@ -198,6 +199,7 @@ require_once 'sidebar.php';
                         </div>
 
                         <input type="hidden" name="admins_id" value="<?php echo $row['admins_id']; ?>">
+                        <input type="hidden" name="delete_image" value="<?php echo $row['admins_file']; ?>">
 
                         <div align="right" class="box-footer">
                             <button type="submit" class="btn btn-primary" name="admins_update">Düzenlemeyi Kaydet</button>

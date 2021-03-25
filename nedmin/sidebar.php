@@ -1,4 +1,7 @@
-
+<?php
+$sql = $db->wread("admins", "admins_id", $_SESSION['admins']['admins_id']);
+$row = $sql->fetch(PDO::FETCH_ASSOC);
+?>
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
 
@@ -8,11 +11,11 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="dimg/admins/<?php echo $_SESSION['admins']['admins_file']; ?>" class="img-circle" alt="User Image">
+                <img src="dimg/admins/<?php echo $row['admins_file']; ?>" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>
-                    <?php echo $_SESSION['admins']['admins_name'] . " " . $_SESSION['admins']['admins_surname']; ?>
+                    <?php echo $row['admins_name'] . " " . $row['admins_surname']; ?>
                 </p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Yönetici</a>
