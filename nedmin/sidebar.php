@@ -36,6 +36,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                     </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li><a href="settings.php"><i class="fa fa-cog"></i>Ayarlar</a></li>
                     <li><a href="users.php"><i class="fa fa-user"></i>Kullanıcılar</a></li>
                     <li><a href="admins.php"><i class="fa fa-user"></i>Yöneticiler</a></li>
                 </ul>
