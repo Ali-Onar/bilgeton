@@ -4,9 +4,9 @@ Bu proje Kodluyoruz & Vivense PHP Yetenek Eğitim Kampı için hazırlanmaktadı
 
 ## Bilgeton Hakkında:
 
-1- Çok kullanıcılı sosyal paylaşım platformu. Kullanıcılar kendi profillerini düzenleyip, kendi makalelerini paylaşabilecekler.
-2- Site içerisinde bulunan CV şablonlarından kendilerine göre olanı seçip doldurduktan sonra PDF çıktısı alabilecekler.
-3- Quizler oluşturup diğer kullanıcılar ile beraber paylaşabilecekler.
+- Çok kullanıcılı sosyal paylaşım platformu. Kullanıcılar kendi profillerini düzenleyip, kendi makalelerini paylaşabilecekler.
+- Site içerisinde bulunan CV şablonlarından kendilerine göre olanı seçip doldurduktan sonra PDF çıktısı alabilecekler.
+- Quizler oluşturup diğer kullanıcılar ile beraber paylaşabilecekler.
 
 ## Tema şablonu
 - [Business Directory & Listings HTML Template](https://themeforest.net/item/reveal-business-directory-listings-html-template/25507058)
