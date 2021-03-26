@@ -114,9 +114,8 @@ require_once 'sidebar.php';
                     if (isset($_POST['settings_update'])) {
                         $result = $db->update('settings', $_POST, [
                             "form_name" => "settings_update",
-                            "password" => "settings_password",
                             "dir" => "settings",
-                            "file_name" => "settings_file",
+                            "file_name" => "settings_value",
                             "columns" => "settings_id",
                             "file_delete" => "delete_image"
                         ]);
@@ -164,21 +163,24 @@ require_once 'sidebar.php';
                                 <div class="col-xs-12">
                                     <?php if ($row['settings_type'] == "text") { ?>
                                         <input type="text" name="settings_value" value="<?php echo $row['settings_value'] ?>" required="" class="form-control">
-                                    <?php } 
-                                    elseif ($row['settings_type'] == "textarea") { ?>
+                                    <?php } elseif ($row['settings_type'] == "textarea") { ?>
                                         <textarea class="form-control" name="settings_value"><?php echo $row['settings_value'] ?></textarea>
-                                    <?php } 
-                                    elseif ($row['settings_type'] == "ckeditor") { ?>
-                                        <textarea class="form-control" name="settings_value"><?php echo $row['settings_value'] ?></textarea>
-                                    <?php } 
-                                    elseif ($row['settings_type'] == "file") { ?>
-                                        <a href ="dimg/settings/<?php echo $row['settings_value'] ?>" target="_blank"><img width="200" src="dimg/settings/<?php echo $row['settings_value'] ?>"></a>
+                                    <?php } elseif ($row['settings_type'] == "ckeditor") { ?>
+                                        <textarea id="editor1" class="form-control" name="settings_value"><?php echo $row['settings_value'] ?></textarea>
+                                    <?php } elseif ($row['settings_type'] == "file") { ?>
+                                        <a href="dimg/settings/<?php echo $row['settings_value'] ?>" target="_blank"><img width="200" src="dimg/settings/<?php echo $row['settings_value'] ?>"></a>
                                     <?php } ?>
                                 </div>
                             </div>
                         </div>
 
-                        <input type="hidden" name="settings_id" value="<?php echo $row['settings_id'] ?>"> 
+                        <!-- CKEditör -->
+                        <script>
+                            CKEDITOR.replace('editor1');
+                        </script>
+
+                        <input type="hidden" name="settings_id" value="<?php echo $row['settings_id'] ?>">
+                        <input type="hidden" name="delete_image" value="<?php echo $row['settings_value'] ?>">
 
                         <div align="right" class="box-footer">
                             <button type="submit" class="btn btn-primary" name="settings_update">Düzenlemeyi Kaydet</button>
@@ -237,7 +239,7 @@ require_once 'sidebar.php';
                                 <td><?php echo $row['settings_value']; ?></td>
                                 <td><?php echo $row['settings_key']; ?></td>
                                 <td align="center"><a href="?settingsUpdate=true&settings_id=<?php echo $row['settings_id']; ?>"><i class="fa fa-pencil-square"></i></a></td>
-
+                                <td align="center"><a href="?settingsDelete=true&settings_id=<?php echo $row['settings_id']; ?>&file_delete=<?php echo $row['settings_file'] ?>"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
                         <?php } ?>
                     </tbody>

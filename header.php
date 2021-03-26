@@ -1,4 +1,7 @@
+<?php
+require_once "settings.php";
 
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -9,7 +12,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-    <title>Bilgeton</title>
+    <title><?php echo $settings['title'] ?></title>
 
     <!-- All Plugins Css -->
     <link rel="stylesheet" href="assets/css/plugins.css">
