@@ -101,7 +101,6 @@ require_once 'sidebar.php';
 
         <?php } elseif (isset($_GET['adminsUpdate'])) {
 
-
         ?>
 
             <div class="box box-primary">
@@ -133,6 +132,8 @@ require_once 'sidebar.php';
 
                     $sql = $db->wread("admins", "admins_id", $_GET['admins_id']);
                     $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+
                     ?>
 
                     <form method="POST" enctype="multipart/form-data">
@@ -218,6 +219,22 @@ require_once 'sidebar.php';
                 <div align="right">
                     <a href="?adminsInsert=true"><button class="btn btn-success">Yeni Ekle</button></a>
                 </div>
+
+                <?php
+                if (isset($_GET['adminsDelete'])) {
+
+                    $result = $db->delete("admins", "admins_id", $_GET['admins_id'], $_GET['file_delete']);
+
+                    if ($result['status']) { ?>
+                        <div class="alert alert-success">Silme Başarılı.</div>
+                    <?php
+                    } else { ?>
+                        <div class="alert alert-danger">Silme Başarısız. <?php echo $result['error'] ?></div>
+                <?php
+                    }
+                }
+                ?>
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -251,7 +268,7 @@ require_once 'sidebar.php';
                                     }
                                     ?></td>
                                 <td align="center"><a href="?adminsUpdate=true&admins_id=<?php echo $row['admins_id']; ?>"><i class="fa fa-pencil-square"></i></a></td>
-                                <td align="center"><i class="fa fa-trash-o"></i></td>
+                                <td align="center"><a href="?adminsDelete=true&admins_id=<?php echo $row['admins_id']; ?>&file_delete=<?php echo $row['admins_file'] ?>"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
                         <?php } ?>
                     </tbody>

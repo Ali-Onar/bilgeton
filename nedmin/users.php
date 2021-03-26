@@ -216,6 +216,22 @@ require_once 'sidebar.php';
                 <div align="right">
                     <a href="?usersInsert=true"><button class="btn btn-success">Yeni Ekle</button></a>
                 </div>
+
+                <?php
+                if (isset($_GET['usersDelete'])) {
+
+                    $result = $db->delete("users", "users_id", $_GET['users_id'], $_GET['file_delete']);
+
+                    if ($result['status']) { ?>
+                        <div class="alert alert-success">Silme Başarılı.</div>
+                    <?php
+                    } else { ?>
+                        <div class="alert alert-danger">Silme Başarısız. <?php echo $result['error'] ?></div>
+                <?php
+                    }
+                }
+                ?>
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -249,7 +265,7 @@ require_once 'sidebar.php';
                                     }
                                     ?></td>
                                 <td align="center"><a href="?usersUpdate=true&users_id=<?php echo $row['users_id']; ?>"><i class="fa fa-pencil-square"></i></a></td>
-                                <td align="center"><i class="fa fa-trash-o"></i></td>
+                                <td align="center"><a href="?usersDelete=true&users_id=<?php echo $row['users_id']; ?>&file_delete=<?php echo $row['users_file'] ?>"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
                         <?php } ?>
                     </tbody>

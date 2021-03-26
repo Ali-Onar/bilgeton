@@ -132,6 +132,24 @@ class CRUD
         }
     }
 
+    // Silme İşlemleri (admins, users)
+    public function delete($table, $columns, $values, $fileName = NULL)
+    {
+        try {
+            if (!empty($fileName)) {
+                unlink("dimg/$table/" . $fileName);
+            }
+            $stmt = $this->db->prepare("DELETE FROM $table WHERE $columns=?");
+            $stmt->execute([htmlspecialchars($values)]);
+
+            return ['status' => TRUE];
+
+        } catch (Exception $e) {
+            return ['status' => FALSE, 'error' => $e->getMessage()];
+        }
+    }
+
+    // Resim Güncelleme
     public function imageUpload($name, $size, $tmp_name, $dir, $file_delete = NULL)
     {
         try {
