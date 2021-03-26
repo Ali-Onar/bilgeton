@@ -6,7 +6,7 @@ require_once 'nedmin/netting/class.crud.php';
 $db = new CRUD();
 
 $sql = $db->read("settings");
-
+//$sql = $db->qSql("SELECT * FROM settings");
 # fetch_assoc: sütuna göre isim getiriyor
 $row = $sql->fetchAll(PDO::FETCH_ASSOC);
 

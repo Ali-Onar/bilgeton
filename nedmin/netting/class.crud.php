@@ -143,7 +143,6 @@ class CRUD
             $stmt->execute([htmlspecialchars($values)]);
 
             return ['status' => TRUE];
-
         } catch (Exception $e) {
             return ['status' => FALSE, 'error' => $e->getMessage()];
         }
@@ -250,6 +249,18 @@ class CRUD
         try {
             $stmt = $this->db->prepare("SELECT * FROM $table WHERE $columns=?");
             $stmt->execute([htmlspecialchars($values)]);
+            return $stmt;
+        } catch (Exception $e) {
+            return ['status' => false, 'error' => $e->getMessage()];
+        }
+    }
+
+    // Harici SQL - Özelliştirilebilir 
+    public function qSql($sql, $options = [])
+    {
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
             return $stmt;
         } catch (Exception $e) {
             return ['status' => false, 'error' => $e->getMessage()];
