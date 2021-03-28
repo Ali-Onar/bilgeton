@@ -15,7 +15,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
             </div>
             <div class="pull-left info">
                 <p>
-                    <?php echo $row['admins_name'] . " " . $row['admins_surname']; ?>
+                    <?php echo $row['admins_name']; ?>
                 </p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Yönetici</a>
@@ -27,8 +27,19 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MENÜLER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+            <li><a href="index.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <!-- <li><a href="slider.php"><i class="fa fa-image"></i> <span>Slider</span></a></li> -->
+            <li class="treeview">
+                <a href="#"><i class="fa fa-link"></i> <span>Kullanıcı İşlemleri</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="users.php"><i class="fa fa-user"></i>Kullanıcılar</a></li>
+                    <li><a href="admins.php"><i class="fa fa-user"></i>Yöneticiler</a></li>
+                </ul>
+            </li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-link"></i> <span>Yönetim</span>
                     <span class="pull-right-container">
@@ -37,8 +48,6 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="settings.php"><i class="fa fa-cog"></i>Ayarlar</a></li>
-                    <li><a href="users.php"><i class="fa fa-user"></i>Kullanıcılar</a></li>
-                    <li><a href="admins.php"><i class="fa fa-user"></i>Yöneticiler</a></li>
                 </ul>
             </li>
         </ul>

@@ -236,7 +236,14 @@ require_once 'sidebar.php';
                         ?>
                             <tr>
                                 <td><?php echo $row['settings_description']; ?></td>
-                                <td><?php echo $row['settings_value']; ?></td>
+                                <td><?php 
+                                if ($row['settings_type'] == 'file') { ?>
+                                    <img width="125" src="dimg/settings/<?php echo $row['settings_value'] ?>">
+                                <?php 
+                                }else {
+                                    echo $row['settings_value'];
+                                }
+                                ?></td>
                                 <td><?php echo $row['settings_key']; ?></td>
                                 <td align="center"><a href="?settingsUpdate=true&settings_id=<?php echo $row['settings_id']; ?>"><i class="fa fa-pencil-square"></i></a></td>
                                 <td align="center"><a href="?settingsDelete=true&settings_id=<?php echo $row['settings_id']; ?>&file_delete=<?php echo $row['settings_file'] ?>"><i class="fa fa-trash-o"></i></a></td>

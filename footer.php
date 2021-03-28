@@ -72,7 +72,7 @@
                     <div class="row align-items-center">
 
                         <div class="col-lg-12 col-md-12 text-center">
-                            <p class="mb-0">© 2021 Bilgeton. Designd By <a href="https://github.com/Ali-Onar">Ali Onar</a> - Tüm hakları saklıdır</p>
+                            <p class="mb-0"><?php echo $settings['copyright'] ?></p>
                         </div>
 
                     </div>

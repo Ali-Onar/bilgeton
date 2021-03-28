@@ -39,6 +39,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Özel CSS Dosyası -->
+  <link rel="stylesheet" href="css/custom.css">
   <!-- CKEditör -->
   <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
@@ -106,7 +108,7 @@ desired effect
                 <img src="dimg/admins/<?php echo $row['admins_file']; ?>" class="user-image" alt="User Image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs">
-                  <?php echo $row['admins_name'] . " " . $row['admins_surname']; ?>
+                  <?php echo $row['admins_name']; ?>
                 </span>
               </a>
               <ul class="dropdown-menu">
@@ -115,7 +117,7 @@ desired effect
                   <img src="dimg/admins/<?php echo $row['admins_file']; ?>" class="img-circle" alt="User Image">
 
                   <p>
-                  <?php echo $row['admins_name'] . " " . $row['admins_surname']; ?>
+                  <?php echo $row['admins_name']; ?>
                     <small>Yönetici</small>
                   </p>
                 </li>

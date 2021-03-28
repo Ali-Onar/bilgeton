@@ -249,15 +249,18 @@ require_once 'sidebar.php';
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="sortable">
                         <?php
-                        $sql = $db->read("admins");
+                        $sql = $db->read("admins", [
+                            "columns_name" => "admins_must",
+                            "columns_sort" => "ASC"
+                        ]);
                         $say = 1;
 
                         while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                         ?>
-                            <tr>
-                                <td><?php echo $say++; ?></td>
+                            <tr id="item-<?php echo $row['admins_id'] ?>">
+                                <td class="sortable"><?php echo $say++; ?></td>
                                 <td><?php echo $row['admins_username']; ?></td>
                                 <td><?php echo $row['admins_name'] . " " . $row['admins_surname']; ?></td>
                                 <td><?php

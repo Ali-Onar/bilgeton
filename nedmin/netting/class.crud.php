@@ -66,8 +66,10 @@ class CRUD
             }
 
             // parolayı şifrele
-            if (isset($options['password'])) {
+            if (!empty($values[$options['password']])) {
                 $values[$options['password']] = md5($values[$options['password']]);
+            } else {
+                unset($values[$options['password']]);
             }
             // buton name sil
             unset($values[$options['form_name']]);
@@ -95,8 +97,17 @@ class CRUD
                     $values[$options['file_delete']]
                 );
 
+                //EKLENEN KISIM BAŞLANGIÇ
+                if (!$name_y) {
+                    return ['status' => FALSE, 'error' => $name_y['error']];
+                    exit;
+                } else {
+                    $values += [$options['file_name'] => $name_y];
+                }
+                //EKLENEN KISIM BİTİŞ
+
                 // resim dosyasının ismini ekle
-                $values += [$options['file_name'] => $name_y];
+                // $values += [$options['file_name'] => $name_y];
                 // print_r($values);
                 // exit;
 
@@ -106,8 +117,10 @@ class CRUD
             unset($values[$options['file_delete']]);
 
             // parolayı şifrele
-            if (isset($options['password'])) {
+            if ($values[$options['password']]) {
                 $values[$options['password']] = md5($values[$options['password']]);
+            } else {
+                unset($values[$options['password']]);
             }
             // valuesExecute ekstra admins_id için
             $columns_id = $values[$options['columns']];
@@ -126,7 +139,11 @@ class CRUD
             $stmt = $this->db->prepare("UPDATE $table SET {$this->addValue($values)} WHERE {$options['columns']}=?");
             $stmt->execute(array_values($valuesExecute));
 
-            return ['status' => TRUE];
+            if ($stmt->rowCount() > 0) {
+                return ['status' => TRUE];
+            } else {
+                throw new Exception('İşlem Başarısız');
+            }
         } catch (Exception $e) {
             return ['status' => FALSE, 'error' => $e->getMessage()];
         }
@@ -171,6 +188,10 @@ class CRUD
 
             if (!empty($file_delete)) {
                 unlink("dimg/$dir/$file_delete");
+
+                // if (strstr($dir, "admins")) {
+                //     $_SESSION['admins']['admins_file'] = $name_y;
+                // }
             }
             // resim dosyasının adını döndür
             return $name_y;
@@ -231,11 +252,30 @@ class CRUD
     }
 
     // veri okuma
-    public function read($table)
+    // public function read($table)
+    // {
+    //     try {
+    //         $stmt = $this->db->prepare("SELECT * FROM $table");
+    //         $stmt->execute();
+    //         return $stmt;
+    //     } catch (Exception $e) {
+    //         echo $e->getMessage();
+    //         return false;
+    //     }
+    // }
+
+    public function read($table, $options = [])
     {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM $table");
+            if (isset($options['columns_name']) && empty($options['limit'])) {
+                $stmt = $this->db->prepare("SELECT * FROM $table order by {$options['columns_name']} {$options['columns_sort']}");
+            } else if (isset($options['columns_name']) && isset($options['limit'])) {
+                $stmt = $this->db->prepare("SELECT * FROM $table order by {$options['columns_name']} {$options['columns_sort']} limit {$options['limit']}");
+            } else {
+                $stmt = $this->db->prepare("SELECT * FROM $table");
+            }
             $stmt->execute();
+
             return $stmt;
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -264,6 +304,21 @@ class CRUD
             return $stmt;
         } catch (Exception $e) {
             return ['status' => false, 'error' => $e->getMessage()];
+        }
+    }
+
+    public function orderUpdate($table, $values, $columns, $orderID)
+    {
+        try {
+            foreach ($values as $key => $value) {
+
+                $stmt = $this->db->prepare("UPDATE $table SET $columns=? WHERE $orderID=?");
+                $stmt->execute([$key, $value]);
+            }
+            return ['status' => TRUE];
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return ['status' => FALSE, 'error' => $e->getMessage()];
         }
     }
 }
