@@ -14,7 +14,8 @@ if (!isset($_SESSION['admins']) && isset ($_COOKIE['adminsLogin'])) {
 }
 
 
-if (!isset($_SESSION['admins']) && !isset($_COOKIE['adminsLogin'])) {
+if (!isset($_SESSION['admins'])) {
     header('Location: login.php');
     exit;
 }
+

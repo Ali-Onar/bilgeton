@@ -251,6 +251,41 @@ class CRUD
         }
     }
 
+    public function usersLogin($users_mail, $users_password)
+    {
+        try {
+
+            $stmt = $this->db->prepare('SELECT * FROM users WHERE users_mail=? and users_password=?');
+            $stmt->execute([
+                $users_mail,
+                md5($users_password)
+            ]);
+
+            if ($stmt->rowCount() == 1) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($row['users_status'] == 0) {
+                    return ['status' => FALSE];
+                    exit;
+                }
+
+                # SESSION ATAMASI
+                $_SESSION["users"] = [
+                    // "users_username" => $users_username,
+                    // "users_name" => $row['users_name'],
+                    // "users_surname" => $row['users_surname'],
+                    // "users_file" => $row['users_file'],
+                    "users_id" => $row['users_id']
+                ];
+                return ['status' => TRUE];
+            } else {
+                return ['status' => FALSE];
+            }
+        } catch (Exception $e) {
+            return ['status' => FALSE, 'error' => $e->getMessage()];
+        }
+    }
+
     // veri okuma
     // public function read($table)
     // {

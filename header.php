@@ -1,5 +1,12 @@
 <?php
+
 require_once "settings.php";
+
+if (isset($_SESSION['users']['users_id'])) { 
+    $sqlUsers = $db->wread("users", "users_id", $_SESSION['users']['users_id']);
+    $rowUsers = $sqlUsers->fetch(PDO::FETCH_ASSOC);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -131,16 +138,29 @@ require_once "settings.php";
 
                         <ul class="nav-menu nav-menu-social align-to-right">
 
-                            <li>
-                                <a href="javascript:void(0);" data-toggle="modal" data-target="#login">
-                                    <i class="fa fa-sign-in-alt mr-1"></i><span class="dn-lg">Sign In</span>
-                                </a>
-                            </li>
-                            <li class="add-listing">
-                                <a href="add-listing.html">
-                                    <i class="fas fa-plus-circle"></i> Add Listings
-                                </a>
-                            </li>
+                            <?php
+                            if (isset($_SESSION['users']['users_id'])) {
+                            ?>
+
+                                <li class="attributes">
+                                    <div class="btn-group account-drop">
+                                        <button type="button" class="btn btn-order-by-filt theme-cl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <img src="nedmin/dimg/users/<?php echo $rowUsers['users_file'] ?>" class="avater-img" alt=""><?php echo $rowUsers['users_name'] ?>
+                                        </button>
+                                        <div class="dropdown-menu pull-right animated flipInX">
+                                            <a href="profile.php"><i class="ti-user"></i>Profil</a>
+                                            <a href="logout.php"><i class="ti-power-off"></i>Çıkış Yap</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            <?php } else { ?>
+                                <li>
+                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#login">
+                                        <i class="fa fa-sign-in-alt mr-1"></i><span class="dn-lg">Sign In</span>
+                                    </a>
+                                </li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </nav>
@@ -151,5 +171,3 @@ require_once "settings.php";
         <!-- ============================================================== -->
         <!-- Top header  -->
         <!-- ============================================================== -->
-
-
