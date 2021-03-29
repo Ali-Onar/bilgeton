@@ -149,6 +149,7 @@ if (isset($_SESSION['users']['users_id'])) {
                                         </button>
                                         <div class="dropdown-menu pull-right animated flipInX">
                                             <a href="profile.php"><i class="ti-user"></i>Profil</a>
+                                            <a href="profile-edit.php"><i class="ti-pencil"></i>Profili Düzenle</a>
                                             <a href="logout.php"><i class="ti-power-off"></i>Çıkış Yap</a>
                                         </div>
                                     </div>

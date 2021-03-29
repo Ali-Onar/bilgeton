@@ -111,7 +111,6 @@ class CRUD
                 // print_r($values);
                 // exit;
 
-
             }
             // Eski dosya değerini sil
             unset($values[$options['file_delete']]);
@@ -148,6 +147,33 @@ class CRUD
             return ['status' => FALSE, 'error' => $e->getMessage()];
         }
     }
+
+
+    public function orderUpdate($table, $values, $options = [])
+    {
+        try {
+
+            $columns_id = $values[$options['columns']];
+            unset($values[$options['form_name']]);
+            unset($values[$options['columns']]);
+
+            $valuesExecute = $values;
+            $valuesExecute += [$options['columns'] => $columns_id];
+
+            $stmt = $this->db->prepare("UPDATE $table SET {$this->addValue($values)} WHERE {$options['columns']}=?");
+            $stmt->execute(array_values($valuesExecute));
+
+            if ($stmt->rowCount() > 0) {
+                return ['status' => TRUE];
+            } else {
+                throw new Exception('İşlem Başarısız');
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return ['status' => FALSE, 'error' => $e->getMessage()];
+        }
+    }
+
 
     // Silme İşlemleri (admins, users)
     public function delete($table, $columns, $values, $fileName = NULL)
@@ -342,18 +368,24 @@ class CRUD
         }
     }
 
-    public function orderUpdate($table, $values, $columns, $orderID)
-    {
-        try {
-            foreach ($values as $key => $value) {
+    // public function orderUpdate($table, $values, $columns=[], $orderID)
+    // {
+    //     try {
+    //         foreach ($values as $key => $value) {
 
-                $stmt = $this->db->prepare("UPDATE $table SET $columns=? WHERE $orderID=?");
-                $stmt->execute([$key, $value]);
-            }
-            return ['status' => TRUE];
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return ['status' => FALSE, 'error' => $e->getMessage()];
-        }
-    }
+    //             $stmt = $this->db->prepare("UPDATE $table SET $columns=? WHERE $orderID=?");
+    //             $stmt->execute([$key, $value]);
+    //         }
+    //         return ['status' => TRUE];
+    //     } catch (PDOException $e) {
+    //         echo $e->getMessage();
+    //         return ['status' => FALSE, 'error' => $e->getMessage()];
+    //     }
+    // }
+
+
+
 }
+
+
+//{$options['columns']}=?
