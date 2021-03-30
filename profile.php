@@ -1,4 +1,9 @@
-<?php require_once 'header.php'; ?>
+<?php require_once 'header.php'; 
+
+$sql = $db->wread("users", "users_slug", $_GET['users_slug']);
+$row = $sql->fetch(PDO::FETCH_ASSOC);
+
+?>
 
 <!-- ============================ Our Story Start ================================== -->
 <section class="gray">
@@ -14,11 +19,11 @@
 					<!-- author thumb -->
 					<div class="author-thumb">
 						<div class="author-thumb-pic">
-							<img src="nedmin/dimg/users/<?php echo $rowUsers['users_file'] ?>" class="img-fluid circle" alt="">
+							<img src="nedmin/dimg/users/<?php echo $row['users_file'] ?>" class="img-fluid circle" alt="">
 						</div>
 						<div class="author-thumb-caption">
-							<h4><?php echo $rowUsers['users_name'] ?></h4>
-							<span><?php echo $rowUsers['users_title'] ?></span>
+							<h4><?php echo $row['users_name'] ?></h4>
+							<span><?php echo $row['users_title'] ?></span>
 						</div>
 					</div>
 
@@ -31,7 +36,7 @@
 							</div>
 							<div class="author-bio-caption">
 								<span>Location</span>
-								<h6><?php echo $rowUsers['users_location'] ?></h6>
+								<h6><?php echo $row['users_location'] ?></h6>
 							</div>
 						</div>
 
@@ -41,7 +46,7 @@
 							</div>
 							<div class="author-bio-caption">
 								<span>Email</span>
-								<h6><?php echo $rowUsers['users_mail'] ?></h6>
+								<h6><?php echo $row['users_mail'] ?></h6>
 							</div>
 						</div>
 
@@ -108,7 +113,7 @@
 							</div>
 
 							<div class="Reveal-block-body">
-								<p><?php echo $rowUsers['users_bio'] ?></p>
+								<p><?php echo $row['users_bio'] ?></p>
 							</div>
 
 						</div>

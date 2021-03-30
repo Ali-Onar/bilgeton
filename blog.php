@@ -110,7 +110,7 @@
 
                                             <span class="post-date"><i class="ti-user"></i><?php echo $row['users_id'] ?></span>
 
-                                            <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 250) ?>...</p>
+                                            <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 180) ?>...</p>
                                             <div class="Reveal-listing-shot-info rating">
                                                 <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>" class="bl-continue">Devamını Oku</a>
                                             </div>
