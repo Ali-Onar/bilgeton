@@ -1,7 +1,7 @@
 <?php
 require_once 'header.php';
 
-$sql = $db->wread("blogs", "blogs_id", $_GET['blogs_id']);
+$sql = $db->wread("blogs", "blogs_slug", $_GET['blogs_slug']);
 $row = $sql->fetch(PDO::FETCH_ASSOC);
 
 

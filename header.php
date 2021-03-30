@@ -67,6 +67,7 @@ if (isset($_SESSION['users']['users_id'])) {
 
                             <li class="active"><a href="index.php">Anasayfa</a></li>
                             <li><a href="blog.php">Blog</a></li>
+                            <li><a href="blog.php">Yazarlar</a></li>
                             <li><a href="about-us.php">Hakkımızda</a></li>
                             <li><a href="contact.php">İletişim</a></li>
 

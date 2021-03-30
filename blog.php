@@ -96,7 +96,7 @@
                             <div class="Reveal-verticle-list listing-shot">
                                 <a href="#" class="list-cat theme-bg"><?php echo $db->tDate($row['blogs_time'], ['date' => TRUE]); ?></a>
                                 <div class="Reveal-signle-item">
-                                    <a class="listing-item" href="single-listing-2.html">
+                                    <a class="listing-item" href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>">
                                         <div class="listing-items">
                                             <div class="listing-shot-img">
                                                 <img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="img-responsive" alt="<?php echo $row['blogs_title'] ?>" />
@@ -106,13 +106,13 @@
                                     <div class="Reveal-verticle-listing-caption">
                                         <a href="#" class="like-listing"><i class="ti-heart"></i></a>
                                         <div class="Reveal-listing-shot-caption">
-                                            <h4><a href="single-listing-2.html"><?php echo $row['blogs_title'] ?></a> <span class="approve-listing"><i class="fa fa-check"></i></span></h4>
+                                            <h4><a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>"><?php echo $row['blogs_title'] ?></a> <span class="approve-listing"><i class="fa fa-check"></i></span></h4>
 
                                             <span class="post-date"><i class="ti-user"></i><?php echo $row['users_id'] ?></span>
 
                                             <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 250) ?>...</p>
                                             <div class="Reveal-listing-shot-info rating">
-                                                <a href="bloglar/<?php echo $db->seo($row['blogs_title']).'/'.$row['blogs_id']; ?>" class="bl-continue">Devamını Oku</a>
+                                                <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>" class="bl-continue">Devamını Oku</a>
                                             </div>
                                         </div>
                                     </div>

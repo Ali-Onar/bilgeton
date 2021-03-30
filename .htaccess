@@ -13,5 +13,8 @@ RewriteRule ^(.*)$ $1.php
 #Seo URL Linklendirme
 
 #Slug yapısına çekme
-RewriteRule ^bloglar/([0-9a-zA-Z-_]+)/([0-9a-zA-Z-_]+) blog-detail.php?blogs_slug=$1&blogs_id=$2 [L,QSA]
+RewriteRule ^bloglar/([0-9a-zA-Z-_]+) blog-detail.php?blogs_slug=$1 [L,QSA]
+
+# Blogs ID'sine göre çekme
+# RewriteRule ^bloglar/([0-9a-zA-Z-_]+)/([0-9a-zA-Z-_]+) blog-detail.php?blogs_slug=$1&blogs_id=$2 [L,QSA]
 # RewriteRule ^bloglar/([0-9a-zA-Z-_]+) blog-detail.php?blogs_id=$2 [L,QSA]
