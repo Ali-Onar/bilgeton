@@ -86,7 +86,7 @@ if (empty($_SESSION['users'])) {
 
                                     <div class="form-group col-md-6">
                                         <label>Twitter</label>
-                                        <input type="email" class="form-control" name="users_twitter" value="<?php echo $rowUsers['users_twitter'] ?>">
+                                        <input type="text" class="form-control" name="users_twitter" value="<?php echo $rowUsers['users_twitter'] ?>">
                                     </div>
 
                                     <div class="form-group col-md-6">
