@@ -99,7 +99,7 @@
                                     <a class="listing-item" href="single-listing-2.html">
                                         <div class="listing-items">
                                             <div class="listing-shot-img">
-                                                <img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="img-responsive" alt="" />
+                                                <img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="img-responsive" alt="<?php echo $row['blogs_title'] ?>" />
                                             </div>
                                         </div>
                                     </a>
@@ -110,9 +110,9 @@
 
                                             <span class="post-date"><i class="ti-user"></i><?php echo $row['users_id'] ?></span>
 
-                                            <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 250) ?></p>
+                                            <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 250) ?>...</p>
                                             <div class="Reveal-listing-shot-info rating">
-                                                <a href="bloglar/<?php echo $row['blogs_id'] ?>" class="bl-continue">Devamını Oku</a>
+                                                <a href="bloglar/<?php echo $db->seo($row['blogs_title']).'/'.$row['blogs_id']; ?>" class="bl-continue">Devamını Oku</a>
                                             </div>
                                         </div>
                                     </div>

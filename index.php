@@ -162,132 +162,36 @@ require_once "search-banner.php";
 
         <!-- row Start -->
         <div class="row">
+            <?php
+            $sql = $db->read("blogs", [
+                "columns_sort" => "DESC",
+                "columns_name" => "blogs_must",
+                "limit" => 6
+            ]);
+            $say = 1;
+            while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            ?>
+                <!-- Single blog Grid -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="Reveal-blog-wrap-grid">
 
-            <!-- Single blog Grid -->
-            <div class="col-lg-4 col-md-6">
-                <div class="Reveal-blog-wrap-grid">
+                        <div class="Reveal-blog-thumb">
+                            <a href="bloglar/<?php echo $db->seo($row['blogs_title']).'/'.$row['blogs_id']; ?>"><img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="img-fluid" alt="<?php echo $row['blogs_title'] ?>" /></a>
+                        </div>
 
-                    <div class="Reveal-blog-thumb">
-                        <a href="blog-detail.html"><img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="" /></a>
+                        <div class="Reveal-blog-info">
+                            <span class="post-date"><i class="ti-user"></i><?php echo $row['users_id']; ?></span>
+                        </div>
+
+                        <div class="Reveal-blog-body">
+                            <h4 class="bl-title"><a href="bloglar/<?php echo $db->seo($row['blogs_title']).'/'.$row['blogs_id']; ?>"><?php echo $row['blogs_title'] ?></a></h4>
+                            <p><?php echo mb_substr($row['blogs_content'], 0, 200) ?>...</p>
+                            <a href="bloglar/<?php echo $db->seo($row['blogs_title']).'/'.$row['blogs_id']; ?>" class="bl-continue">Devamını Oku</a>
+                        </div>
+
                     </div>
-
-                    <div class="Reveal-blog-info">
-                        <span class="post-date"><i class="ti-calendar"></i>30 july 2018</span>
-                    </div>
-
-                    <div class="Reveal-blog-body">
-                        <h4 class="bl-title"><a href="blog-detail.html">Why people choose listio for own properties</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
-                        <a href="blo-detail.html" class="bl-continue">Continue</a>
-                    </div>
-
                 </div>
-            </div>
-
-            <!-- Single blog Grid -->
-            <div class="col-lg-4 col-md-6">
-                <div class="Reveal-blog-wrap-grid">
-
-                    <div class="Reveal-blog-thumb">
-                        <a href="blog-detail.html"><img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="" /></a>
-                    </div>
-
-                    <div class="Reveal-blog-info">
-                        <span class="post-date"><i class="ti-calendar"></i>10 August 2018</span>
-                    </div>
-
-                    <div class="Reveal-blog-body">
-                        <h4 class="bl-title"><a href="blog-detail.html">List of benifits and impressive listeo services</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
-                        <a href="blo-detail.html" class="bl-continue">Continue</a>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Single blog Grid -->
-            <div class="col-lg-4 col-md-6">
-                <div class="Reveal-blog-wrap-grid">
-
-                    <div class="Reveal-blog-thumb">
-                        <a href="blog-detail.html"><img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="" /></a>
-                    </div>
-
-                    <div class="Reveal-blog-info">
-                        <span class="post-date"><i class="ti-calendar"></i>30 Sep 2018</span>
-                    </div>
-
-                    <div class="Reveal-blog-body">
-                        <h4 class="bl-title"><a href="blog-detail.html">What people says about listio properties</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
-                        <a href="blo-detail.html" class="bl-continue">Continue</a>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Single blog Grid -->
-            <div class="col-lg-4 col-md-6">
-                <div class="Reveal-blog-wrap-grid">
-
-                    <div class="Reveal-blog-thumb">
-                        <a href="blog-detail.html"><img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="" /></a>
-                    </div>
-
-                    <div class="Reveal-blog-info">
-                        <span class="post-date"><i class="ti-calendar"></i>30 july 2018</span>
-                    </div>
-
-                    <div class="Reveal-blog-body">
-                        <h4 class="bl-title"><a href="blog-detail.html">Why people choose listio for own properties</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
-                        <a href="blo-detail.html" class="bl-continue">Continue</a>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Single blog Grid -->
-            <div class="col-lg-4 col-md-6">
-                <div class="Reveal-blog-wrap-grid">
-
-                    <div class="Reveal-blog-thumb">
-                        <a href="blog-detail.html"><img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="" /></a>
-                    </div>
-
-                    <div class="Reveal-blog-info">
-                        <span class="post-date"><i class="ti-calendar"></i>10 August 2018</span>
-                    </div>
-
-                    <div class="Reveal-blog-body">
-                        <h4 class="bl-title"><a href="blog-detail.html">List of benifits and impressive listeo services</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
-                        <a href="blo-detail.html" class="bl-continue">Continue</a>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Single blog Grid -->
-            <div class="col-lg-4 col-md-6">
-                <div class="Reveal-blog-wrap-grid">
-
-                    <div class="Reveal-blog-thumb">
-                        <a href="blog-detail.html"><img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="" /></a>
-                    </div>
-
-                    <div class="Reveal-blog-info">
-                        <span class="post-date"><i class="ti-calendar"></i>30 Sep 2018</span>
-                    </div>
-
-                    <div class="Reveal-blog-body">
-                        <h4 class="bl-title"><a href="blog-detail.html">What people says about listio properties</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
-                        <a href="blo-detail.html" class="bl-continue">Continue</a>
-                    </div>
-
-                </div>
-            </div>
+            <?php } ?>
 
         </div>
         <!-- /row -->

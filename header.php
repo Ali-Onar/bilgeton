@@ -2,7 +2,7 @@
 
 require_once "settings.php";
 
-if (isset($_SESSION['users']['users_id'])) { 
+if (isset($_SESSION['users']['users_id'])) {
     $sqlUsers = $db->wread("users", "users_id", $_SESSION['users']['users_id']);
     $rowUsers = $sqlUsers->fetch(PDO::FETCH_ASSOC);
 }
@@ -78,6 +78,12 @@ if (isset($_SESSION['users']['users_id'])) {
                             if (isset($_SESSION['users']['users_id'])) {
                             ?>
 
+                                <li class="add-listing">
+                                    <a href="article-add.php">
+                                        <i class="fas fa-plus-circle"></i> Yazı Ekle
+                                    </a>
+                                </li>
+
                                 <li class="attributes">
                                     <div class="btn-group account-drop">
                                         <button type="button" class="btn btn-order-by-filt theme-cl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -90,6 +96,8 @@ if (isset($_SESSION['users']['users_id'])) {
                                         </div>
                                     </div>
                                 </li>
+
+
 
                             <?php } else { ?>
                                 <li>
