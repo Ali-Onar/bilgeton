@@ -94,7 +94,7 @@
 
                             <!--  Single Listing -->
                             <div class="Reveal-verticle-list listing-shot">
-                                <a href="#" class="list-cat theme-bg"><?php echo $db->tDate($row['blogs_time'],['date' => TRUE]); ?></a>
+                                <a href="#" class="list-cat theme-bg"><?php echo $db->tDate($row['blogs_time'], ['date' => TRUE]); ?></a>
                                 <div class="Reveal-signle-item">
                                     <a class="listing-item" href="single-listing-2.html">
                                         <div class="listing-items">
@@ -112,7 +112,7 @@
 
                                             <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 250) ?></p>
                                             <div class="Reveal-listing-shot-info rating">
-                                                <a href="blo-detail.html" class="bl-continue">Devamını Oku</a>
+                                                <a href="bloglar/<?php echo $row['blogs_id'] ?>" class="bl-continue">Devamını Oku</a>
                                             </div>
                                         </div>
                                     </div>

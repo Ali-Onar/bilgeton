@@ -21,6 +21,8 @@ if (isset($_SESSION['users']['users_id'])) {
 
     <title><?php echo $settings['title'] ?></title>
 
+    <base href="http://localhost/bilgeton/index.php">
+
     <!-- All Plugins Css -->
     <link rel="stylesheet" href="assets/css/plugins.css">
 

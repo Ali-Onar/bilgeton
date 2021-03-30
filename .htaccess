@@ -1,0 +1,17 @@
+RewriteEngine on
+
+#Seo url oluşturma
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+
+#Yeniden İsimlendirme
+#RewriteRule ^haberler$ blog-details.php [NC,L]
+
+
+#Seo URL Linklendirme
+
+#Slug yapısına çekme
+# RewriteRule ^bloglar/([0-9a-zA-Z-_]+) blog-detail.php?blogs_slug=$1&blogs_id=$2 [L,QSA]
+RewriteRule ^bloglar/([0-9a-zA-Z-_]+) blog-detail.php?blogs_id=$2 [L,QSA]
