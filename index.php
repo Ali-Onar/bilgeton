@@ -6,142 +6,39 @@ require_once "search-banner.php";
 <!-- ============================ Calegory Start ================================== -->
 <section class="half light gray">
     <div class="container">
-
         <div class="row">
             <div class="owl-carousel owl-theme" id="categorie-slide">
+                <?php
+                $sql = $db->read("category", [
+                    "columns_sort" => "DESC",
+                    "limit" => 6
+                ]);
+                $say = 1;
+                while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+                ?>
 
-                <!-- Single Category -->
-                <div class="Reveal-cats-box">
-                    <a href="grid-with-sidebar.html" class="Reveal-category-box">
-                        <div class="category-desc">
-                            <div class="category-icon">
-                                <i class="lni-revenue theme-cl"></i>
-                                <i class="lni-revenue abs-icon"></i>
+
+
+                    <!-- Single Category -->
+                    <div class="Reveal-cats-box">
+                        <a href="grid-with-sidebar.html" class="Reveal-category-box">
+                            <div class="category-desc">
+                                <div class="category-icon">
+                                    <i class="<?php echo $row['category_icon'] ?>"></i>
+                                </div>
+
+                                <div class="Reveal-category-detail category-desc-text">
+                                    <h4><?php echo $row['category_name'] ?></h4>
+                                    <p>122 Listings</p>
+                                </div>
                             </div>
+                        </a>
+                    </div>
 
-                            <div class="Reveal-category-detail category-desc-text">
-                                <h4>Accounting</h4>
-                                <p>122 Listings</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <!-- Single Category -->
-                <div class="Reveal-cats-box">
-                    <a href="grid-with-sidebar.html" class="Reveal-category-box">
-                        <div class="category-desc">
-                            <div class="category-icon">
-                                <i class="lni-construction-hammer"></i>
-                            </div>
-
-                            <div class="Reveal-category-detail category-desc-text">
-                                <h4>Automotives</h4>
-                                <p>155 Listings</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Category -->
-                <div class="Reveal-cats-box">
-                    <a href="grid-with-sidebar.html" class="Reveal-category-box">
-                        <div class="category-desc">
-                            <div class="category-icon">
-                                <i class="ti-briefcase"></i>
-                            </div>
-
-                            <div class="Reveal-category-detail category-desc-text">
-                                <h4>Business</h4>
-                                <p>300 Listings</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Category -->
-                <div class="Reveal-cats-box">
-                    <a href="grid-with-sidebar.html" class="Reveal-category-box">
-                        <div class="category-desc">
-                            <div class="category-icon">
-                                <i class="ti-ruler-pencil"></i>
-                            </div>
-
-                            <div class="Reveal-category-detail category-desc-text">
-                                <h4>Education</h4>
-                                <p>80 Listings</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Category -->
-                <div class="Reveal-cats-box">
-                    <a href="grid-with-sidebar.html" class="Reveal-category-box">
-                        <div class="category-desc">
-                            <div class="category-icon">
-                                <i class="ti-heart-broken"></i>
-                            </div>
-
-                            <div class="Reveal-category-detail category-desc-text">
-                                <h4>Healthcare</h4>
-                                <p>120 Listings</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Category -->
-                <div class="Reveal-cats-box">
-                    <a href="grid-with-sidebar.html" class="Reveal-category-box">
-                        <div class="category-desc">
-                            <div class="category-icon">
-                                <i class="lni-burger"></i>
-                            </div>
-
-                            <div class="Reveal-category-detail category-desc-text">
-                                <h4>Eat & Foods</h4>
-                                <p>78 Listings</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Category -->
-                <div class="Reveal-cats-box">
-                    <a href="grid-with-sidebar.html" class="Reveal-category-box">
-                        <div class="category-desc">
-                            <div class="category-icon">
-                                <i class="ti-world"></i>
-                            </div>
-
-                            <div class="Reveal-category-detail category-desc-text">
-                                <h4>Transportation</h4>
-                                <p>90 Listings</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Single Category -->
-                <div class="Reveal-cats-box">
-                    <a href="grid-with-sidebar.html" class="Reveal-category-box">
-                        <div class="category-desc">
-                            <div class="category-icon">
-                                <i class="ti-desktop"></i>
-                            </div>
-
-                            <div class="Reveal-category-detail category-desc-text">
-                                <h4> IT & Software</h4>
-                                <p>210 Listings</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
+                <?php } ?>
             </div>
         </div>
-
     </div>
 </section>
 <!-- ============================ Calegory End ================================== -->
@@ -176,7 +73,7 @@ require_once "search-banner.php";
                     <div class="Reveal-blog-wrap-grid">
 
                         <div class="Reveal-blog-thumb">
-                            <a href="bloglar/<?php echo $db->seo($row['blogs_title']).'/'.$row['blogs_id']; ?>"><img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="img-fluid" alt="<?php echo $row['blogs_title'] ?>" /></a>
+                            <a href="bloglar/<?php echo $db->seo($row['blogs_title']) . '/' . $row['blogs_id']; ?>"><img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="img-fluid" alt="<?php echo $row['blogs_title'] ?>" /></a>
                         </div>
 
                         <div class="Reveal-blog-info">
@@ -184,9 +81,9 @@ require_once "search-banner.php";
                         </div>
 
                         <div class="Reveal-blog-body">
-                            <h4 class="bl-title"><a href="bloglar/<?php echo $db->seo($row['blogs_title']).'/'.$row['blogs_id']; ?>"><?php echo $row['blogs_title'] ?></a></h4>
+                            <h4 class="bl-title"><a href="bloglar/<?php echo $db->seo($row['blogs_title']) . '/' . $row['blogs_id']; ?>"><?php echo $row['blogs_title'] ?></a></h4>
                             <p><?php echo mb_substr($row['blogs_content'], 0, 200) ?>...</p>
-                            <a href="bloglar/<?php echo $db->seo($row['blogs_title']).'/'.$row['blogs_id']; ?>" class="bl-continue">Devamını Oku</a>
+                            <a href="bloglar/<?php echo $db->seo($row['blogs_title']) . '/' . $row['blogs_id']; ?>" class="bl-continue">Devamını Oku</a>
                         </div>
 
                     </div>

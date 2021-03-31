@@ -15,7 +15,7 @@
             while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
             ?>
                 <!-- Single blog Grid -->
-                <div class="col-lg-3 col-md-9">
+                <div class="col-lg-4 col-md-9">
                     <div class="Reveal-blog-wrap-grid">
 
 
@@ -37,7 +37,6 @@
 
         </div>
         <!-- /row -->
-
     </div>
 </section>
 <!-- ============================ Reviews End ================================== -->
