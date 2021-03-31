@@ -15,5 +15,8 @@ Bu proje Kodluyoruz & Vivense PHP Yetenek Eğitim Kampı için hazırlanmaktadı
 - [AdminLTE](https://github.com/ColorlibHQ/AdminLTE)
 
 ## Kullanılan Teknolojiler: 
-Temalar bootstrap üzerine kurulmuş olup proje responsive uyumludur. 
-Programlama dili olarak PHP, veritabanı olarak MySQL kullanılmaktadır.
+- Temalar bootstrap üzerine kurulmuş olup proje responsive uyumludur. 
+- Programlama dili: PHP, JavaScript, 
+- Veritabanı: MySQL,
+- Sürükle Bırak İşlemleri: Jquery UI
+- Sürükle Bırak İşlemlerinde Veri Gönderimi: Ajax
