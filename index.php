@@ -73,7 +73,13 @@ require_once "search-banner.php";
                     <div class="Reveal-blog-wrap-grid">
 
                         <div class="Reveal-blog-thumb">
-                            <a href="bloglar/<?php echo $db->seo($row['blogs_title']) . '/' . $row['blogs_id']; ?>"><img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="img-fluid" alt="<?php echo $row['blogs_title'] ?>" /></a>
+                            <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>">
+                                <div class="listing-items">
+                                    <div class="listing-shot-img">
+                                        <img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="img-fluid" alt="<?php echo $row['blogs_title'] ?>" />
+                                    </div>
+                                </div>
+                            </a>
                         </div>
 
                         <div class="Reveal-blog-info">
@@ -81,9 +87,9 @@ require_once "search-banner.php";
                         </div>
 
                         <div class="Reveal-blog-body">
-                            <h4 class="bl-title"><a href="bloglar/<?php echo $db->seo($row['blogs_title']) . '/' . $row['blogs_id']; ?>"><?php echo $row['blogs_title'] ?></a></h4>
+                            <h4 class="bl-title"><a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>"><?php echo $row['blogs_title'] ?></a></h4>
                             <p><?php echo mb_substr($row['blogs_content'], 0, 200) ?>...</p>
-                            <a href="bloglar/<?php echo $db->seo($row['blogs_title']) . '/' . $row['blogs_id']; ?>" class="bl-continue">Devamını Oku</a>
+                            <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>" class="bl-continue">Devamını Oku</a>
                         </div>
 
                     </div>

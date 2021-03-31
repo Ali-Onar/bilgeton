@@ -44,7 +44,7 @@
       handle: ".sortable",
       stop: function(event, ui) {
         var data = $(this).sortable('serialize');
-        console.log(data);
+        
         $.ajax({
           type: "POST",
           dataType: "json",

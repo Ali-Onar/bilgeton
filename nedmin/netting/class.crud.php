@@ -190,6 +190,27 @@ class CRUD
         }
     }
 
+    public function ajaxUpdate($table,$values,$columns,$orderId) { 
+
+
+		try {
+
+			foreach ($values as $key => $value) { 
+
+				$stmt = $this->db->prepare("UPDATE $table SET $columns=? WHERE $orderId=?");
+				$stmt->execute([$key,$value]);   
+
+			}
+
+			return ['status' => TRUE];
+
+		} catch(PDOException $e) {    
+			echo $e->getMessage();
+			return ['status' => FALSE,'error'=> $e->getMessage()];
+
+		}
+	}
+
 
     // Silme İşlemleri (admins, users)
     public function delete($table, $columns, $values, $fileName = NULL)

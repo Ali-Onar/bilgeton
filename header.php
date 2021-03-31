@@ -91,7 +91,13 @@ if (isset($_SESSION['users']['users_id'])) {
                                             <img src="nedmin/dimg/users/<?php echo $rowUsers['users_file'] ?>" class="avater-img" alt=""><?php echo $rowUsers['users_name'] ?>
                                         </button>
                                         <div class="dropdown-menu pull-right animated flipInX">
-                                            <a href="profile.php"><i class="ti-user"></i>Profil</a>
+
+                                            <?php
+                                            $sql = $db->wread("users", "users_id", $_SESSION['users']['users_id']);
+                                            $row = $sql->fetch(PDO::FETCH_ASSOC);
+                                            ?>
+
+                                            <a href="users/<?php echo $db->seo($row['users_slug']); ?>"><i class="ti-user"></i>Profil</a>
                                             <a href="profile-edit.php"><i class="ti-pencil"></i>Profili Düzenle</a>
                                             <a href="logout.php"><i class="ti-power-off"></i>Çıkış Yap</a>
                                         </div>
