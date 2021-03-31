@@ -70,17 +70,12 @@ require_once "search-banner.php";
             ?>
                 <!-- Single blog Grid -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="Reveal-blog-wrap-grid">
-
-                        <div class="Reveal-blog-thumb">
+                    <div class="Reveal-hotel-item">
+                        <figure class="Reveal-hotel-wrap">
                             <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>">
-                                <div class="listing-items">
-                                    <div class="listing-shot-img">
-                                        <img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="img-fluid" alt="<?php echo $row['blogs_title'] ?>" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                <img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="cover" alt="<?php echo $row['blogs_title'] ?>" />
+                        </figure>
+                        </a>
 
                         <div class="Reveal-blog-info">
                             <span class="post-date"><i class="ti-user"></i><?php echo $row['users_id']; ?></span>
@@ -91,7 +86,6 @@ require_once "search-banner.php";
                             <p><?php echo mb_substr($row['blogs_content'], 0, 200) ?>...</p>
                             <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>" class="bl-continue">Devamını Oku</a>
                         </div>
-
                     </div>
                 </div>
             <?php } ?>
