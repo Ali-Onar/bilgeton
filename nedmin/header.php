@@ -42,7 +42,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Özel CSS Dosyası -->
   <link rel="stylesheet" href="css/custom.css">
   <!-- CKEditör -->
-  <script src="http://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>
+  <script src="http://cdn.ckeditor.com/4.6.2/full-all/ckeditor.js"></script>
+  <!--  <script src="bower_components/ckeditor4/ckeditor.js"></script> -->
+
+
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -117,7 +121,7 @@ desired effect
                   <img src="dimg/admins/<?php echo $row['admins_file']; ?>" class="img-circle" alt="User Image">
 
                   <p>
-                  <?php echo $row['admins_name']; ?>
+                    <?php echo $row['admins_name']; ?>
                     <small>Yönetici</small>
                   </p>
                 </li>

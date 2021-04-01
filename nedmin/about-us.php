@@ -63,9 +63,12 @@ require_once 'sidebar.php';
                     <script type="text/javascript">
                         CKEDITOR.replace('about_content', {
                             height: 300,
-                            filebrowserUploadUrl: "upload.php"
+                            filebrowserUploadUrl: "netting/upload.php"
                         });
                     </script>
+
+
+
 
                     <input type="hidden" name="about_id" value="<?php echo $row['about_id']; ?>">
 

@@ -1,4 +1,4 @@
-<?php require_once 'header.php'; 
+<?php require_once 'header.php';
 
 
 # Giriş yapılmışsa login'e giremesin.
@@ -24,49 +24,49 @@ $db = new CRUD();
                     <div class="row main_login_form">
                         <div class="login_form_dm">
 
-                        <?php
-                    // Form işlemleri
-                    if (isset($_POST['users_login'])) {
+                            <?php
+                            // Form işlemleri
+                            if (isset($_POST['users_login'])) {
 
-                        $result = $db->usersLogin(htmlspecialchars($_POST['users_mail']), htmlspecialchars($_POST['users_password']));
+                                $result = $db->usersLogin(htmlspecialchars($_POST['users_mail']), htmlspecialchars($_POST['users_password']));
 
-                        if ($result['status']) {
-                            header('Location: index.php');
-                            exit;
-                        } else {
-                    ?>
-                            <div class="alert alert-danger">
-                                Kullanıcı adı veya parola hatalı!
-                            </div>
-                    <?php
-                        }
-                    }
-                    ?>
+                                if ($result['status']) {
+                                    header('Location: index.php');
+                                    exit;
+                                } else {
+                            ?>
+                                    <div class="alert alert-danger">
+                                        Kullanıcı adı veya parola hatalı!
+                                    </div>
+                            <?php
+                                }
+                            }
+                            ?>
 
 
                             <form id="edd_login_form" class="edd_form" method="post">
                                 <fieldset>
                                     <p class="edd-login-username">
                                         <label>Email</label>
-                                        <input class="form-control" type="text" name="users_mail" placeholder="Your Username or Email">
+                                        <input class="form-control" type="text" name="users_mail" placeholder="Email adresiniz">
                                     </p>
                                     <p class="edd-login-password">
-                                        <label>Password</label>
+                                        <label>Parola</label>
                                         <input class="form-control" type="password" name="users_password" placeholder="*******">
                                     </p>
                                     <p class="edd-login-remember">
                                         <input id="remember" class="checkbox-custom" name="remember" type="checkbox">
-                                        <label for="remember" class="checkbox-custom-label">Remember Me</label>
+                                        <label for="remember" class="checkbox-custom-label">Beni Hatırla!</label>
                                     </p>
                                     <p class="edd-lost-password">
-                                        <a href="#">Lost Password?</a>
+                                        <a href="#">Parolamı Unuttum!</a>
                                     </p>
                                     <p class="edd-login-submit">
                                         <input type="submit" name="users_login" class="btn btn-md btn-theme full-width" value="Login">
                                     </p>
-
                                 </fieldset>
                             </form>
+                            <a href="register.php" class="btn btn-md btn-theme-2 full-width">Kayıt Ol</a>
                         </div>
                     </div>
 

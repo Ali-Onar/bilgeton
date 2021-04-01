@@ -69,6 +69,37 @@
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+
+<!--
+CkEditor 5 upload - çalışmıyor  
+
+<script src="bower_components/ckeditor/ckeditor.js"></script>
+<script src="bower_components/ckeditor/translations/tr.js"></script>
+
+<script type="text/javascript">
+  ClassicEditor.create(document.querySelector('#editor'), {
+    ckfinder: {
+      uploadUrl: 'dimg/ajax/upload'
+    },
+    toolbar: {
+      items: ['undo', 'redo', '|', 'heading', '|', 'bold', 'italic', 'underline', 'alignment', 'fontColor', 'fontSize', 'numberedList', 'bulletedList', 'horizontalLine', '|', 'link', 'imageUpload', 'insertTable', 'mediaEmbed']
+    },
+    language: 'tr',
+    image: {
+      toolbar: ['imageTextAlternative', 'imageStyle:full', 'imageStyle:side']
+    },
+    table: {
+      contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+    },
+    licenseKey: '',
+  }).then(editor => {
+    ckeditor_then = editor;
+  }).catch(error => {
+    ckeditor_err = error;
+  });
+</script> -->
+
+
 </body>
 
 </html>

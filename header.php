@@ -108,11 +108,15 @@ if (isset($_SESSION['users']['users_id'])) {
 
                             <?php } else { ?>
                                 <li>
-                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#login">
-                                        <i class="fa fa-sign-in-alt mr-1"></i><span class="dn-lg">Sign In</span>
+                                    <a href="login.php">
+                                        <i class="fa fa-sign-in-alt mr-1"></i><span class="dn-lg">Giriş Yap / Kayıt Ol</span>
                                     </a>
                                 </li>
                             <?php } ?>
+
+                            
+
+
                         </ul>
                     </div>
                 </nav>

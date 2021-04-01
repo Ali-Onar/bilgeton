@@ -11,9 +11,9 @@ if (isset($_FILES['upload']['name'])) {
     chmod('upload', 0777);
     $allowed_extension = array("jpg", "gif", "png");
     if (in_array($extension, $allowed_extension)) {
-        move_uploaded_file($file, 'dimg/upload/' . $new_image_name);
+        move_uploaded_file($file, '../dimg/upload/' . $new_image_name);
         $function_number = $_GET['CKEditorFuncNum'];
-        $url = 'dimg/upload/' . $new_image_name;
+        $url = 'http://localhost/bilgeton/nedmin/dimg/upload/' . $new_image_name;
         $message = '';
         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($function_number, '$url', '$message');</script>";
     }

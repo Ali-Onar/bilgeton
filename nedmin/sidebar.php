@@ -27,7 +27,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MENÜLER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="index.php"><i class="fa fa-home"></i>Dashboard</a></li>
+            <li><a href="index.php"><i class="fa fa-home"></i>Anasayfa</a></li>
             <li><a href="users.php"><i class="fa fa-user"></i>Kullanıcılar</a></li>
             <li><a href="admins.php"><i class="fa fa-user-secret"></i>Yöneticiler</a></li>
             <li><a href="settings.php"><i class="fa fa-cog"></i>Ayarlar</a></li>
