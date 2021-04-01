@@ -29,6 +29,8 @@
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
+
+
 <!-- Tablo Özellikleri -->
 <script type="text/javascript">
   $(function() {
@@ -44,7 +46,7 @@
       handle: ".sortable",
       stop: function(event, ui) {
         var data = $(this).sortable('serialize');
-        
+
         $.ajax({
           type: "POST",
           dataType: "json",

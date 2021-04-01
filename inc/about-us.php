@@ -1,6 +1,6 @@
 <?php require_once '../header.php'; 
 
-$sql = $db->read("aboutus");
+$sql = $db->read("about");
 $row = $sql->fetch(PDO::FETCH_ASSOC);
 
 ?>
@@ -34,7 +34,6 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                 <div class="about-captione">
                 <h6 class="text-info"><?php echo $row['about_title'] ?></h6>
                     <p><?php echo $row['about_content'] ?></p>
-                    
                 </div>
             </div>
 

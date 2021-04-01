@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Özel CSS Dosyası -->
   <link rel="stylesheet" href="css/custom.css">
   <!-- CKEditör -->
-  <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+  <script src="http://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
