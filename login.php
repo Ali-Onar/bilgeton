@@ -20,7 +20,7 @@ $db = new CRUD();
             <div class="col-lg-6 col-md-10">
                 <div class="loving-modern-login">
 
-                    <div class="text-center mb-4"><img src="assets/img/logo-icon.png" class="img-fluid" alt="" /></div>
+                    <div class="text-center mb-4"><img width="100" src="nedmin/dimg/settings/<?php echo $settings['logo'] ?>" class="img-fluid" alt="" /></div>
                     <div class="row main_login_form">
                         <div class="login_form_dm">
 

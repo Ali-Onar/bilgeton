@@ -190,26 +190,24 @@ class CRUD
         }
     }
 
-    public function ajaxUpdate($table,$values,$columns,$orderId) { 
+    public function ajaxUpdate($table, $values, $columns, $orderId)
+    {
 
 
-		try {
+        try {
 
-			foreach ($values as $key => $value) { 
+            foreach ($values as $key => $value) {
 
-				$stmt = $this->db->prepare("UPDATE $table SET $columns=? WHERE $orderId=?");
-				$stmt->execute([$key,$value]);   
+                $stmt = $this->db->prepare("UPDATE $table SET $columns=? WHERE $orderId=?");
+                $stmt->execute([$key, $value]);
+            }
 
-			}
-
-			return ['status' => TRUE];
-
-		} catch(PDOException $e) {    
-			echo $e->getMessage();
-			return ['status' => FALSE,'error'=> $e->getMessage()];
-
-		}
-	}
+            return ['status' => TRUE];
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return ['status' => FALSE, 'error' => $e->getMessage()];
+        }
+    }
 
 
     // Silme İşlemleri (admins, users)
@@ -344,6 +342,25 @@ class CRUD
             } else {
                 return ['status' => FALSE];
             }
+        } catch (Exception $e) {
+            return ['status' => FALSE, 'error' => $e->getMessage()];
+        }
+    }
+
+    public function usersRegister($users_name, $users_mail, $users_password, $options)
+    {
+        try {
+
+            if (isset($options['slug'])) {
+                if (empty($_POST[$options['slug']])) {
+                    $_POST[$options['slug']] = $this->seo($users_name);
+                }
+            }
+
+            $stmt = $this->db->prepare("INSERT INTO users SET users_name=?, users_mail=?, users_password=?, users_status=?, users_slug=?");
+            $stmt->execute([$users_name, $users_mail, md5($users_password), 1, $_POST[$options['slug']]]);
+
+            return ['status' => TRUE];
         } catch (Exception $e) {
             return ['status' => FALSE, 'error' => $e->getMessage()];
         }

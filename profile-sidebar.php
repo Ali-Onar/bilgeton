@@ -2,9 +2,9 @@
     <div class="Reveal-dashboard-navbar">
 
         <div class="Reveal-d-user-avater">
-            <img src="https://via.placeholder.com/400x400" class="img-fluid avater" alt="">
-            <h4>Adam Harshvardhan</h4>
-            <span>Canada USA</span>
+            <img src="nedmin/dimg/users/<?php echo $row['users_file'] ?>" class="img-fluid avater" alt="">
+            <h4><?php echo $row['users_name'] ?></h4>
+            <span><?php echo $row['users_location'] ?></span>
         </div>
 
         <div class="Reveal-dash-navigation">
