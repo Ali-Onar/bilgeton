@@ -13,8 +13,8 @@ require_once "search-banner.php";
                     "columns_sort" => "DESC",
                     "limit" => 6
                 ]);
-                $say = 1;
                 while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+                    
                 ?>
 
 
@@ -60,11 +60,9 @@ require_once "search-banner.php";
         <!-- row Start -->
         <div class="row">
             <?php
-            $sql = $db->read("blogs", [
-                "columns_sort" => "DESC",
-                "columns_name" => "blogs_must",
-                "limit" => 6
-            ]);
+            $sql = $db->qSql("SELECT blogs.*, users.* 
+            FROM blogs INNER JOIN users 
+            ON blogs.users_id=users.users_id order by blogs_must DESC limit 6");
             $say = 1;
             while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
             ?>
@@ -78,7 +76,7 @@ require_once "search-banner.php";
                         </a>
 
                         <div class="Reveal-blog-info">
-                            <span class="post-date"><i class="ti-user"></i><?php echo $row['users_id']; ?></span>
+                            <span class="post-date"><i class="ti-user"></i><?php echo $row['users_name']; ?></span>
                         </div>
 
                         <div class="Reveal-blog-body">

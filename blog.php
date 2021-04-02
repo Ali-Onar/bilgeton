@@ -62,7 +62,16 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="shorting-wrap">
-                            <h5 class="shorting-title">507 Results</h5>
+                            <h5 class="shorting-title">
+                            <?php
+                            $sql = $db->read("blogs");
+                            $row = $sql->fetchAll(PDO::FETCH_ASSOC);
+                            
+                            $i = 1;
+                            echo count($row[$i]);
+                            
+                            ?>
+                            </h5>
                             <div class="shorting-right">
                                 <label>Short By:</label>
                                 <div class="dropdown show">
@@ -84,11 +93,8 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
 
                         <?php
-                        $sql = $db->read("blogs", [
-                            "columns_sort" => "ASC",
-                            "columns_name" => "blogs_must"
-                        ]);
-                        $say = 1;
+                        $sql = $db->qSql("SELECT blogs.*, users.* FROM blogs INNER JOIN users ON blogs.users_id=users.users_id order by blogs_time DESC");
+
                         while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                         ?>
 
@@ -108,7 +114,7 @@
                                         <div class="Reveal-listing-shot-caption">
                                             <h4><a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>"><?php echo $row['blogs_title'] ?></a> <span class="approve-listing"><i class="fa fa-check"></i></span></h4>
 
-                                            <span class="post-date"><i class="ti-user"></i><?php echo $row['users_id'] ?></span>
+                                            <span class="post-date"><i class="ti-user"></i><?php echo $row['users_name'] ?></span>
 
                                             <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 180) ?>...</p>
                                             <div class="Reveal-listing-shot-info rating">
