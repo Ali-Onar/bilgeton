@@ -347,9 +347,24 @@ class CRUD
         }
     }
 
-    public function usersRegister($users_name, $users_mail, $users_password, $options)
+    public function usersRegister($users_name, $users_mail, $users_password1, $users_password2, $row_user, $row_mail, $options)
     {
         try {
+
+
+            if ($users_name == $row_user || $users_mail == $row_mail) {
+                throw new Exception('İsim veya mail kullanılıyor, kayıt başarısız..!');
+            }
+
+            if ($users_password1 != $users_password2) {
+                throw new Exception('Parolalar uyuşmuyor, kayıt başarısız...');
+            } else if ($users_password1 == $users_password2) {
+                $users_password = $users_password1;
+            }
+
+            if (strlen($users_password) < 6) {
+                throw new Exception('Parolanız 6 haneden fazla olmalıdır, kayıt başarısız..!');
+            }
 
             if (isset($options['slug'])) {
                 if (empty($_POST[$options['slug']])) {

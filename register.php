@@ -1,8 +1,19 @@
 <?php require_once 'header.php';
 
-require_once 'nedmin/netting/class.crud.php';
-$db = new CRUD();
+// require_once 'nedmin/netting/class.crud.php';
+// $db = new CRUD();
 
+$sql = $db->read("users");
+$row = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+
+foreach ($row as $key) {
+
+    $rows['users_name'] = $key['users_name'];
+    $rows['users_mail'] = $key['users_mail'];
+    
+    //echo $rows['users_name'] . "------>>>>" . $key['users_mail']."<br>";
+}
 ?>
 
 <!-- ============================ Login Start================================== -->
@@ -17,27 +28,28 @@ $db = new CRUD();
                         <div class="login_form_dm">
 
                             <?php
+
+
                             // Form işlemleri
                             if (isset($_POST['users_register'])) {
 
-                                if ($_POST['users_password1'] == $_POST['users_password2']) {
-                                    $users_password = $_POST['users_password2'];
-                                }
+
+
                                 $result = $db->usersRegister(
                                     htmlspecialchars($_POST['users_name']),
                                     htmlspecialchars($_POST['users_mail']),
-                                    htmlspecialchars($users_password),
+                                    htmlspecialchars($_POST['users_password1']),
+                                    htmlspecialchars($_POST['users_password2']),
+                                    htmlspecialchars($rows['users_name']),
+                                    htmlspecialchars($rows['users_mail']),
                                     ["slug" => "users_slug"]
                                 );
 
-                                if ($result['status']) {
-                                    header('Location: login.php');
-                                    exit;
-                                } else {
-                            ?>
-                                    <div class="alert alert-danger">
-                                        İşlem Başarısız..!
-                                    </div>
+                                if ($result['status']) { ?>
+                                    <div class="alert alert-success">Kayıt Başarılı.</div>
+                                <?php
+                                } else { ?>
+                                    <div class="alert alert-danger"><?php echo $result['error']; ?></div>
                             <?php
                                 }
                             }
