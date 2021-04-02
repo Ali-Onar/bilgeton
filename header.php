@@ -69,7 +69,7 @@ if (isset($_SESSION['users']['users_id'])) {
                             <li><a href="blog.php">Blog</a></li>
                             <li><a href="users.php">Yazarlar</a></li>
                             <li><a href="inc/about-us.php">Hakkımızda</a></li>
-                            <li><a href="contact.php">İletişim</a></li>
+                            <li><a href="inc/contact.php">İletişim</a></li>
 
                         </ul>
 

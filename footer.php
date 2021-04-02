@@ -7,60 +7,48 @@
 
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
-                        <img src="assets/img/logo5.jpg" class="img-fluid f-logo" alt="" />
-                        <p>Yeşilyurt Mahallesi<br>Tokat</p>
+                        
+                        <p><?php echo $settings['address'] ?><br><?php echo $settings['district'] ?>, <?php echo $settings['province'] ?></p>
                         <ul class="footer-bottom-social">
-                            <li><a href="#" target="_blank"><i class="ti-facebook"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="ti-twitter"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="ti-instagram"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="ti-linkedin"></i></a></li>
+                            <li><a href="<?php echo $settings['facebook'] ?>" target="_blank"><i class="ti-facebook"></i></a></li>
+                            <li><a href="<?php echo $settings['twitter'] ?>" target="_blank"><i class="ti-twitter"></i></a></li>
+                            <li><a href="<?php echo $settings['instagram'] ?>" target="_blank"><i class="ti-instagram"></i></a></li>
+                            <li><a href="<?php echo $settings['linkedin'] ?>" target="_blank"><i class="ti-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <div class="footer-widget">
-                        <h4 class="widget-title">Useful links</h4>
                         <ul class="footer-menu">
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="faq.html">FAQs Page</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
-                            <li><a href="login.html">Login</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-4">
-                    <div class="footer-widget">
-                        <h4 class="widget-title">Developers</h4>
-                        <ul class="footer-menu">
-                            <li><a href="booking.html">Booking</a></li>
-                            <li><a href="stays.html">Stays</a></li>
-                            <li><a href="adventures.html">Adventures</a></li>
-                            <li><a href="author-detail.html">Author Detail</a></li>
+                            <li><a href="index.php">Anasayfa</a></li>
+                            <li><a href="blog.php">Blog</a></li>
+                            <li><a href="users.php">Yazarlar</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-lg-2 col-md-4">
                     <div class="footer-widget">
-                        <h4 class="widget-title">Useful links</h4>
                         <ul class="footer-menu">
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="faq.html">Jobs</a></li>
-                            <li><a href="checkout.html">Events</a></li>
-                            <li><a href="about-us.html">Press</a></li>
+                            <li><a href="inc/about-us.php">Hakkımızda</a></li>
+                            <li><a href="inc/contact.php">İletişim</a></li>
+                            <li><a href="privacy.php">Gizlilik Sözleşmesi</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-lg-2 col-md-4">
                     <div class="footer-widget">
-                        <h4 class="widget-title">Useful links</h4>
                         <ul class="footer-menu">
-                            <li><a href="about-us.html">Support</a></li>
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="checkout.html">Privacy & Terms</a></li>
+                            <li><a href="login.php">Giriş Yap</a></li>
+                            <li><a href="register.php">Kayıt Ol</a></li>
                         </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-widget">
+                    <img src="nedmin/dimg/settings/bilgeton_footer.jpg" class="img-fluid f-logo" alt="" />
                     </div>
                 </div>
 
