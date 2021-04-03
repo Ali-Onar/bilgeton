@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 
 require_once 'netting/setConfig.php';
 require_once('function/function.php');

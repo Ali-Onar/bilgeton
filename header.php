@@ -32,6 +32,8 @@ if (isset($_SESSION['users']['users_id'])) {
 
     <!-- Custom Color Option -->
     <link href="assets/css/colors.css" rel="stylesheet">
+      <!-- CKEditör -->
+  <script src="http://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
 </head>
 

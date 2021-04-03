@@ -64,11 +64,11 @@
                         <div class="shorting-wrap">
                             <h5 class="shorting-title">
                             <?php
-                            $sql = $db->read("blogs");
-                            $row = $sql->fetchAll(PDO::FETCH_ASSOC);
+                            // $sql = $db->read("blogs");
+                            // $row = $sql->fetchAll(PDO::FETCH_ASSOC);
                             
-                            $i = 1;
-                            echo count($row[$i]);
+                            // $i = 1;
+                            // echo count($row[$i]);
                             
                             ?>
                             </h5>
@@ -114,9 +114,10 @@
                                         <div class="Reveal-listing-shot-caption">
                                             <h4><a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>"><?php echo $row['blogs_title'] ?></a> <span class="approve-listing"><i class="fa fa-check"></i></span></h4>
 
-                                            <span class="post-date"><i class="ti-user"></i><?php echo $row['users_name'] ?></span>
+                                            
 
-                                            <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 180) ?>...</p>
+                                            <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 100) ?>...</p>
+                                            <span class="post-date"><i class="ti-user"></i><?php echo $row['users_name'] ?></span>
                                             <div class="Reveal-listing-shot-info rating">
                                                 <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>" class="bl-continue">Devamını Oku</a>
                                             </div>

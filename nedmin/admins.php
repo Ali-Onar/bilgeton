@@ -25,7 +25,7 @@ require_once 'sidebar.php';
                         $result = $db->insert('admins', $_POST, [
                             "form_name" => "admins_insert",
                             "password" => "admins_password",
-                            "dir" => "admins",
+                            "dir" => "dimg/admins",
                             "file_name" => "admins_file"
                         ]);
 
@@ -115,7 +115,7 @@ require_once 'sidebar.php';
                         $result = $db->update('admins', $_POST, [
                             "form_name" => "admins_update",
                             "password" => "admins_password",
-                            "dir" => "admins",
+                            "dir" => "dimg/admins",
                             "file_name" => "admins_file",
                             "columns" => "admins_id",
                             "file_delete" => "delete_image"

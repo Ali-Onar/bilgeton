@@ -74,10 +74,12 @@ class CRUD
             }
 
             // parolayı şifrele
-            if (!empty($values[$options['password']])) {
-                $values[$options['password']] = md5($values[$options['password']]);
-            } else {
-                unset($values[$options['password']]);
+            if (isset($options['password'])) {
+                if (!empty($values[$options['password']])) {
+                    $values[$options['password']] = md5($values[$options['password']]);
+                } else {
+                    unset($values[$options['password']]);
+                }
             }
             // buton name sil
             unset($values[$options['form_name']]);
@@ -243,12 +245,12 @@ class CRUD
 
             $name_y = uniqid() . "." . $ext;
 
-            if (!@move_uploaded_file($tmp_name, "dimg/$dir/$name_y")) {
+            if (!@move_uploaded_file($tmp_name, "$dir/$name_y")) {
                 throw new Exception('Dosya yükleme hatası...');
             }
 
             if (!empty($file_delete)) {
-                unlink("dimg/$dir/$file_delete");
+                unlink("$dir/$file_delete");
 
                 // if (strstr($dir, "admins")) {
                 //     $_SESSION['admins']['admins_file'] = $name_y;

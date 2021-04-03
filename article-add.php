@@ -26,10 +26,11 @@ if (empty($_SESSION['users'])) {
                             if (isset($_POST['blogs_insert'])) {
                                 $result = $db->insert('blogs', $_POST, [
                                     "form_name" => "blogs_insert",
-                                    "dir" => "blogs",
+                                    "dir" => "nedmin/dimg/blogs",
                                     "file_name" => "blogs_file",
                                     "slug" => "blogs_slug",
                                     "title" => "blogs_title"
+                                    
                                 ]);
 
                                 if ($result['status']) { ?>
@@ -42,21 +43,22 @@ if (empty($_SESSION['users'])) {
                             }
                             ?>
 
-                            <form method="POST">
-                                <div class="form-group">
-                                    <label>Yazı Başlığı*</label>
-                                    <input class="form-control" type="text" name="blogs_title">
-                                </div>
+                            <form method="POST" enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <label>Yazı Resmi*</label>
-                                    <input class="form-control" type="file" name="blogs_file">
+                                    <input type="file" class="form-control" required="" name="blogs_file">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Yazı Başlığı*</label>
+                                    <input class="form-control" required="" type="text" name="blogs_title">
                                 </div>
 
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label>Kategori</label>
-                                        <select id="list-category" class="form-control" name="category_id">
+                                        <select id="list-category" required="" class="form-control" name="category_id">
                                             <option value="">&nbsp;</option>
                                             <option value="1">Cafe & Restaurant</option>
                                             <option value="2">Businesses</option>
@@ -69,16 +71,25 @@ if (empty($_SESSION['users'])) {
 
                                 <div class="form-group">
                                     <label>Etiket</label>
-                                    <input class="form-control" type="text" name="blogs_tag" placeholder="Etiketleri virgül ile ayırınız...">
+                                    <input class="form-control" required="" type="text" name="blogs_tag" placeholder="Etiketleri virgül ile ayırınız...">
                                 </div>
                                 <div class="form-group">
                                     <label>İçerik</label>
-                                    <textarea class="form-control" name="blogs_content"></textarea>
+                                    <textarea id="blogs_content" class="form-control" name="blogs_content"></textarea>
                                 </div>
+
                                 <input type="hidden" name="users_id" value="<?php echo $_SESSION['users']['users_id'] ?>">
                                 <button class="btn btn-theme" type="submit" name="blogs_insert">Yazı Ekle</button>
 
                             </form>
+
+                            <script type="text/javascript">
+                                CKEDITOR.replace('blogs_content', {
+                                    height: 300,
+                                    filebrowserUploadUrl: "inc/article-upload.php"
+                                });
+                            </script>
+
                         </div>
 
                     </div>
