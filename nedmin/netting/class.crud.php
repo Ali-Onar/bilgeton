@@ -439,6 +439,17 @@ class CRUD
         }
     }
 
+    public function search($sql, $options = [])
+    {
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(["%$options%"]);
+            return $stmt;
+        } catch (Exception $e) {
+            return ['status' => false, 'error' => $e->getMessage()];
+        }
+    }
+
     // public function orderUpdate($table, $values, $columns=[], $orderID)
     // {
     //     try {
