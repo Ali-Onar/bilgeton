@@ -2,6 +2,8 @@
 
 Bu proje Kodluyoruz & Vivense PHP Yetenek Eğitim Kampı için hazırlanmaktadır. Proje yayına alındıktan sonra kaynak kodları burada yer alacaktır. Proje, geliştiricilerin destek vermesine açık olacaktır.
 
+[bilgeton-sunum](https://hackmd.io/Cpndt9rtSJaDrDozy3ybZg)
+
 ## Bilgeton Hakkında:
 
 - Çok kullanıcılı sosyal paylaşım platformu. Kullanıcılar kendi profillerini düzenleyip, kendi makalelerini paylaşabilecekler.
@@ -20,3 +22,9 @@ Bu proje Kodluyoruz & Vivense PHP Yetenek Eğitim Kampı için hazırlanmaktadı
 - Veritabanı: MySQL,
 - Sürükle Bırak İşlemleri: Jquery UI
 - Sürükle Bırak İşlemlerinde Veri Gönderimi: Ajax
+
+## Hesaplara Giriş
+
+Profil-> bilgeton/login.php: test49@gmail.com, 123456
+
+Admin:-> bilgeton/nedmin/login.php: test49, 123456
