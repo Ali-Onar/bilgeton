@@ -21,7 +21,7 @@ require_once "search-banner.php";
 
                     <!-- Single Category -->
                     <div class="Reveal-cats-box">
-                        <a href="grid-with-sidebar.html" class="Reveal-category-box">
+                        <a href="category/<?php echo $db->seo($row['category_slug']); ?>" class="Reveal-category-box">
                             <div class="category-desc">
                                 <div class="category-icon">
                                     <i class="<?php echo $row['category_icon'] ?>"></i>

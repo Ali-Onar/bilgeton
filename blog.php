@@ -11,7 +11,7 @@
 
                     <div class="Reveal-exlip-sidebar-header">
                         <div class="exlip-header-flex">
-                            <h4>Filtrele & Uygula</h4>
+                            <h4>Uygula</h4>
                         </div>
                         <div class="exlip-header-last">
                             <a href="javascript:void(0);" class="elip-btn-side" data-toggle="collapse" data-target="#filter-search"><i class="fas fa-sliders-h"></i></a>
@@ -21,36 +21,20 @@
                     <!-- Find New Property -->
                     <div class="Reveal-exlip-sidebar-body show" id="filter-search">
                         <div class="Reveal-exlip-sidebar-widgets">
-
-                            <div class="form-group">
-                                <div class="input-with-icon">
-                                    <input type="text" class="form-control" placeholder="Arama">
-                                    <i class="ti-search"></i>
+                            <form method="POST" action="search.php">
+                                <div class="form-group">
+                                    <div class="input-with-icon">
+                                        <input type="text" class="form-control" name="search_name" placeholder="Aranacak kelimeyi yazın.">
+                                        
+                                        <i class="ti-search"></i>
+                                    </div>
                                 </div>
-                            </div>
 
 
-                            <div class="form-group">
-                                <div class="input-with-icon">
-                                    <select id="list-category" class="form-control">
-                                        <option value="">&nbsp;</option>
-                                        <option value="1">Spa & Bars</option>
-                                        <option value="2">Restaurants</option>
-                                        <option value="3">Hotels</option>
-                                        <option value="4">Educations</option>
-                                        <option value="5">Business</option>
-                                        <option value="6">Retail & Shops</option>
-                                        <option value="7">Garage & Services</option>
-                                    </select>
-                                    <i class="ti-briefcase"></i>
+                                <div class="text-center">
+                                    <button name="search_blog" class="btn btn-theme btn-md full-width">Ara</button>
                                 </div>
-                            </div>
-
-
-                            <div class="text-center">
-                                <a href="javascript:void(0);" class="btn btn-theme btn-md full-width">Arama Yap</a>
-                            </div>
-
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -63,14 +47,14 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="shorting-wrap">
                             <h5 class="shorting-title">
-                            <?php
-                            // $sql = $db->read("blogs");
-                            // $row = $sql->fetchAll(PDO::FETCH_ASSOC);
-                            
-                            // $i = 1;
-                            // echo count($row[$i]);
-                            
-                            ?>
+                                <?php
+                                // $sql = $db->read("blogs");
+                                // $row = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+                                // $i = 1;
+                                // echo count($row[$i]);
+
+                                ?>
                             </h5>
                             <div class="shorting-right">
                                 <label>Short By:</label>
@@ -114,7 +98,7 @@
                                         <div class="Reveal-listing-shot-caption">
                                             <h4><a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>"><?php echo $row['blogs_title'] ?></a> <span class="approve-listing"><i class="fa fa-check"></i></span></h4>
 
-                                            
+
 
                                             <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 100) ?>...</p>
                                             <span class="post-date"><i class="ti-user"></i><?php echo $row['users_name'] ?></span>
