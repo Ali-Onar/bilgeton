@@ -1,4 +1,4 @@
-<?php require_once 'header.php'; 
+<?php require_once 'header.php';
 
 $sql = $db->wread("users", "users_slug", $_GET['users_slug']);
 $row = $sql->fetch(PDO::FETCH_ASSOC);
@@ -131,65 +131,40 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 
 							<!-- Buraya Yazılar Gelecek -->
 							<!--  Single Listing -->
-							<div class="Reveal-verticle-list listing-shot">
-								<div class="listing-badge now-open">Now Open</div>
-								<a href="#" class="list-cat theme-bg">Rental</a>
-								<div class="Reveal-signle-item">
-									<a class="listing-item" href="single-listing-2.html">
-										<div class="listing-items">
-											<div class="listing-shot-img">
-												<img src="https://via.placeholder.com/650x440" class="img-responsive" alt="" />
+
+							<?php
+							$forBlogsUsersID = $row['users_id'];
+							$sql = $db->qSql(
+								"SELECT * FROM blogs WHERE users_id=:users_id order by blogs_time DESC",
+								$forBlogsUsersID
+							);
+
+							while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+							?>
+
+								<div class="Reveal-verticle-list listing-shot">
+									<a href="#" class="list-cat theme-bg"><?php echo $db->tDate($row['blogs_time'], ['date' => TRUE]); ?></a>
+									<div class="Reveal-signle-item">
+										<a class="listing-item" href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>">
+											<div class="listing-items">
+												<div class="listing-shot-img">
+													<img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="img-responsive" alt="<?php echo $row['blogs_title'] ?>" />
+												</div>
 											</div>
-										</div>
-									</a>
-									<div class="Reveal-verticle-listing-caption">
-										<a href="#" class="like-listing"><i class="ti-heart"></i></a>
-										<div class="Reveal-listing-shot-caption">
-											<h4><a href="single-listing-2.html">George’s Barber Shop George’s Barber Shop </a> <span class="approve-listing"><i class="fa fa-check"></i></span></h4>
-
-
-											<span class="post-date"><i class="ti-calendar"></i>30 july 2018</span>
-
-
-											<p class="Reveal-short-descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
-											<div class="Reveal-listing-shot-info rating">
-												<a href="blo-detail.html" class="bl-continue">Devamını Oku</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!--  Single Listing -->
-							<div class="Reveal-verticle-list listing-shot">
-								<div class="listing-badge now-open">Now Open</div>
-								<a href="#" class="list-cat theme-bg">Rental</a>
-								<div class="Reveal-signle-item">
-									<a class="listing-item" href="single-listing-2.html">
-										<div class="listing-items">
-											<div class="listing-shot-img">
-												<img src="https://via.placeholder.com/650x440" class="img-responsive" alt="" />
-											</div>
-										</div>
-									</a>
-									<div class="Reveal-verticle-listing-caption">
-										<a href="#" class="like-listing"><i class="ti-heart"></i></a>
-										<div class="Reveal-listing-shot-caption">
-											<h4><a href="single-listing-2.html">George’s Barber Shop George’s Barber Shop </a> <span class="approve-listing"><i class="fa fa-check"></i></span></h4>
-
-
-											<span class="post-date"><i class="ti-calendar"></i>30 july 2018</span>
-
-
-											<p class="Reveal-short-descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
-											<div class="Reveal-listing-shot-info rating">
-												<a href="blo-detail.html" class="bl-continue">Devamını Oku</a>
+										</a>
+										<div class="Reveal-verticle-listing-caption">
+											<a href="#" class="like-listing"><i class="ti-heart"></i></a>
+											<div class="Reveal-listing-shot-caption">
+												<h4><a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>"><?php echo $row['blogs_title'] ?></a> <span class="approve-listing"><i class="fa fa-check"></i></span></h4>
+												<p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 150) ?>...</p>
+												<div class="Reveal-listing-shot-info rating">
+													<a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>" class="bl-continue">Devamını Oku</a>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-
+							<?php } ?>
 						</div>
 
 

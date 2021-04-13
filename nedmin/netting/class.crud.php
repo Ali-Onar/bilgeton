@@ -428,11 +428,11 @@ class CRUD
     }
 
     // Harici SQL - Özelliştirilebilir 
-    public function qSql($sql, $options = [])
+    public function qSql($sql, $options = null)
     {
         try {
             $stmt = $this->db->prepare($sql);
-            $stmt->execute();
+            $stmt->execute(['users_id' => $options]);
             return $stmt;
         } catch (Exception $e) {
             return ['status' => false, 'error' => $e->getMessage()];
