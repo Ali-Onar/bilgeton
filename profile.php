@@ -183,12 +183,16 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 
 							<div class="Reveal-block-body p-0">
 								<ul class="item-pricing">
+									<?php
+									$sql = $db->qSql(
+										"SELECT * FROM books WHERE users_id=:users_id order by books_time DESC",
+										$forBlogsUsersID
+									);
 
-									<li>Kardeşimin Hikayesi<span>05.01.2021</span></li>
-									<li>Hilal ve Haç<span>19.10.2020</span></li>
-									<li>Modern Türkiye'nin Doğuşu<span>30.09.2020</span></li>
-									<li>Serenad<span>02.08.2019</span></li>
-									<li>Bozkurtlar<span>18.05.2018</span></li>
+									while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+									?>
+										<li><?php echo $row['books_name'] ?><span><?php echo $db->tDate($row['books_time'], ['date' => TRUE]); ?></span></li>
+									<?php } ?>
 								</ul>
 							</div>
 
