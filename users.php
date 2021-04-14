@@ -17,8 +17,6 @@
                 <!-- Single blog Grid -->
                 <div class="col-lg-4 col-md-9">
                     <div class="Reveal-blog-wrap-grid">
-
-
                         <div class="Reveal-blog-info">
                             <a href="users/<?php echo $db->seo($row['users_slug']); ?>">
                                 <span class="post-date"><i class="ti-user"></i><?php echo $row['users_name']; ?></span>

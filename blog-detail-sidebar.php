@@ -1,15 +1,6 @@
 <!-- Single blog Grid -->
 <div class="col-lg-4 col-md-12 col-sm-12 col-12">
 
-<!-- Searchbard -->
-<div class="single-widgets widget_search">
-    <h4 class="title">Search</h4>
-    <form action="#" class="sidebar-search-form">
-        <input type="search" name="search" placeholder="Search..">
-        <button type="submit"><i class="ti-search"></i></button>
-    </form>
-</div>
-
 <!-- Categories -->
 <div class="single-widgets widget_category">
     <h4 class="title">Categories</h4>

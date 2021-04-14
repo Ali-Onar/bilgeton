@@ -6,27 +6,27 @@
 
         <!-- row Start -->
         <div class="row">
-                <?php
-                $sql = $db->read("category");
-                while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-                    
-                ?>
-                    <!-- Single Category -->
-                    <div class="Reveal-cats-box">
-                        <a href="category/<?php echo $db->seo($row['category_slug']); ?>" class="Reveal-category-box">
-                            <div class="category-desc">
-                                <div class="category-icon">
-                                    <i class="<?php echo $row['category_icon'] ?>"></i>
-                                </div>
+            <?php
+            $sql = $db->read("category");
+            while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
 
-                                <div class="Reveal-category-detail category-desc-text">
-                                    <h4><?php echo $row['category_name'] ?></h4>
-                                    <p>122 Listings</p>
-                                </div>
+            ?>
+                <!-- Single Category -->
+                <div class="Reveal-cats-box">
+                    <a href="category-details/<?php echo $db->seo($row['category_slug']); ?>" class="Reveal-category-box">
+                        <div class="category-desc">
+                            <div class="category-icon">
+                                <i class="<?php echo $row['category_icon'] ?>"></i>
                             </div>
-                        </a>
-                    </div>
-                <?php } ?>
+
+                            <div class="Reveal-category-detail category-desc-text">
+                                <h4><?php echo $row['category_name'] ?></h4>
+                                <p>122 Listings</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php } ?>
 
         </div>
         <!-- /row -->

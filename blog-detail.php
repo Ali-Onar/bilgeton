@@ -1,10 +1,14 @@
 <?php
 require_once 'header.php';
 
-$sql = $db->wread("blogs", "blogs_slug", $_GET['blogs_slug']);
+// $sql = $db->wread("blogs", "blogs_slug", $_GET['blogs_slug']);
+// $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+$sql = $db->wreadBlog(
+    "SELECT blogs.*, users.* FROM blogs INNER JOIN users ON blogs.users_id=users.users_id WHERE blogs_slug=?",
+    $_GET['blogs_slug']
+);
 $row = $sql->fetch(PDO::FETCH_ASSOC);
-
-
 
 ?>
 
@@ -27,7 +31,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 
                         <div class="post-top-meta">
                             <ul class="meta-comment-tag">
-                                <li><a href="#"><span class="icons"><i class="ti-user"></i></span>by <?php echo $row['users_id']; ?></a></li>
+                                <li><a href="#"><span class="icons"><i class="ti-user"></i></span>by <?php echo $row['users_name']; ?></a></li>
                                 <li><a href="#"><span class="icons"><i class="ti-medall-alt"></i></span><?php echo $db->tDate($row['blogs_time'], ['date' => TRUE]); ?></a></li>
                             </ul>
                         </div>

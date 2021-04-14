@@ -136,6 +136,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 							$forBlogsUsersID = $row['users_id'];
 							$sql = $db->qSql(
 								"SELECT * FROM blogs WHERE users_id=:users_id order by blogs_time DESC",
+								'users_id',
 								$forBlogsUsersID
 							);
 
@@ -186,6 +187,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 									<?php
 									$sql = $db->qSql(
 										"SELECT * FROM books WHERE users_id=:users_id order by books_time DESC",
+										'users_id',
 										$forBlogsUsersID
 									);
 

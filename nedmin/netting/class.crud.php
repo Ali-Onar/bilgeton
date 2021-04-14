@@ -427,12 +427,24 @@ class CRUD
         }
     }
 
-    // Harici SQL - Özelliştirilebilir 
-    public function qSql($sql, $options = null)
+    // veri çekme blog detay
+    public function wreadBlog($sql, $values)
     {
         try {
             $stmt = $this->db->prepare($sql);
-            $stmt->execute(['users_id' => $options]);
+            $stmt->execute([$values]);
+            return $stmt;
+        } catch (Exception $e) {
+            return ['status' => false, 'error' => $e->getMessage()];
+        }
+    }
+
+    // Harici SQL - Özelliştirilebilir 
+    public function qSql($sql, $idName = null, $idValue = null)
+    {
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([$idName => $idValue]);
             return $stmt;
         } catch (Exception $e) {
             return ['status' => false, 'error' => $e->getMessage()];
