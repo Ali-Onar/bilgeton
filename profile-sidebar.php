@@ -9,10 +9,14 @@
 
         <div class="Reveal-dash-navigation">
             <ul>
+                <li><a href="profile-edit.php"><i class="ti-user"></i>Profili Düzenle</a></li>
                 <li><a href="article-add.php"><i class="ti-plus"></i>Yazı Ekle</a></li>
                 <li><a href="book-add.php"><i class="ti-pencil-alt"></i>Kitap Ekle</a></li>
+                <li><a href="my-articles.php"><i class="ti-bookmark"></i>Yazılarım</a></li>
+                <li><a href="my-books.php"><i class="ti-bookmark-alt"></i>Okunan Kitaplar</a></li>
                 <!-- <li><a href="dashboard.php"><i class="ti-dashboard"></i>Gösterge Paneli</a></li> -->
-                <li class="active"><a href="profile-edit.php"><i class="ti-user"></i>Profili Düzenle</a></li>
+
+                <li><a href="profile-photo.php"><i class="ti-image"></i>Profili Resmi</a></li>
                 <!-- <li><a href="favories.php"><i class="ti-heart"></i>Favoriler</a></li> -->
                 <li><a href="change-password.php"><i class="ti-unlock"></i>Parolamı Değiştir</a></li>
                 <li><a href="#"><i class="ti-power-off"></i>Güvenli Çıkış</a></li>

@@ -8,10 +8,10 @@ if (empty($_SESSION['users'])) {
 ?>
 
 <section class="gray">
-    <div class="container">
-
-        <div class="row justify-content-md-center">
-            <div class="col-lg-10 col-md-10 col-sm-12">
+    <div class="container-fluid">
+        <div class="row">
+            <?php require_once 'profile-sidebar.php'; ?>
+            <div class="col-lg-9 col-md-8 col-sm-12">
                 <div class="add-listing-form form-submit">
 
                     <!-- general information -->
@@ -27,7 +27,7 @@ if (empty($_SESSION['users'])) {
                                 $result = $db->insert('books', $_POST, [
                                     "form_name" => "books_insert",
                                     "file_name" => "books_file",
-                                    
+
                                 ]);
 
                                 if ($result['status']) { ?>
@@ -45,6 +45,11 @@ if (empty($_SESSION['users'])) {
                                 <div class="form-group">
                                     <label>Kitap İsmi*</label>
                                     <input class="form-control" required="" type="text" name="books_name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Bitiş Tarihi*</label>
+                                    <input class="form-control" required="" type="date" name="books_time">
                                 </div>
 
                                 <input type="hidden" name="users_id" value="<?php echo $_SESSION['users']['users_id'] ?>">
