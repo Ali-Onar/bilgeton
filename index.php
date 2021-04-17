@@ -14,7 +14,7 @@ require_once "search-banner.php";
                     "limit" => 6
                 ]);
                 while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-                    
+
                 ?>
 
 
@@ -72,8 +72,9 @@ require_once "search-banner.php";
                         <figure class="Reveal-hotel-wrap">
                             <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>">
                                 <img src="nedmin/dimg/blogs/<?php echo $row['blogs_file'] ?>" class="cover" alt="<?php echo $row['blogs_title'] ?>" />
+                            </a>
                         </figure>
-                        </a>
+
 
                         <div class="Reveal-blog-info">
                             <span class="post-date"><i class="ti-user"></i><?php echo $row['users_name']; ?></span>
@@ -115,10 +116,10 @@ require_once "search-banner.php";
             <div class="col-lg-4 col-md-4">
                 <div class="Reveal-working-step">
                     <div class="Reveal-icon-wrap">
-                        <div class="Reveal-icon-large-box f-light-success"><i class="ti-map-alt text-success"></i></div>
+                        <div class="Reveal-icon-large-box f-light-success"><i class="ti-pencil-alt text-success"></i></div>
                     </div>
                     <div class="Reveal-working-box-caption">
-                        <h4>Find Interesting Place</h4>
+                        <h4>İstediğin Alanda Makaleni Yaz</h4>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p>
                     </div>
                 </div>
@@ -127,10 +128,10 @@ require_once "search-banner.php";
             <div class="col-lg-4 col-md-4">
                 <div class="Reveal-working-step">
                     <div class="Reveal-icon-wrap">
-                        <div class="Reveal-icon-large-box f-light-warning"><i class="ti-user text-warning"></i></div>
+                        <div class="Reveal-icon-large-box f-light-warning"><i class="ti-book text-warning"></i></div>
                     </div>
                     <div class="Reveal-working-box-caption">
-                        <h4>Contact a Few Owners</h4>
+                        <h4>Kitap Listeni Hazırla</h4>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p>
                     </div>
                 </div>
@@ -139,10 +140,10 @@ require_once "search-banner.php";
             <div class="col-lg-4 col-md-4">
                 <div class="Reveal-working-step remove">
                     <div class="Reveal-icon-wrap">
-                        <div class="Reveal-icon-large-box f-light-blue"><i class="ti-shield text-blue"></i></div>
+                        <div class="Reveal-icon-large-box f-light-blue"><i class="ti-view-list text-blue"></i></div>
                     </div>
                     <div class="Reveal-working-box-caption">
-                        <h4>Make a Reservation</h4>
+                        <h4>Yapılacaklar Listesi Oluştur</h4>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p>
                     </div>
                 </div>
@@ -175,8 +176,13 @@ require_once "search-banner.php";
                     <div class="item">
                         <div class="smart-testimonials">
                             <div class="smart-testi-thumb">
-                                <img src="https://via.placeholder.com/700x450" class="img-fluid" alt="" />
+
+                                <figure class="Reveal-hotel-wrap">
+                                    <img src="nedmin/dimg/whatPeopleSay/a.png" class="img-fluid" alt="" />
+
+                                </figure>
                                 <span class="cipt bg-success"><i class="fas fa-quote-left"></i></i></span>
+
                             </div>
                             <div class="smart-testimonials-content">
                                 <div class="Reveal-smart-tes-content">
@@ -194,7 +200,10 @@ require_once "search-banner.php";
                     <div class="item">
                         <div class="smart-testimonials">
                             <div class="smart-testi-thumb">
-                                <img src="https://via.placeholder.com/700x450" class="img-fluid" alt="" />
+                                <figure class="Reveal-hotel-wrap">
+                                    <img src="nedmin/dimg/whatPeopleSay/b.png" class="img-fluid" alt="" />
+
+                                </figure>
                                 <span class="cipt bg-purple"><i class="fas fa-quote-left"></i></i></span>
                             </div>
                             <div class="smart-testimonials-content">
@@ -213,7 +222,10 @@ require_once "search-banner.php";
                     <div class="item">
                         <div class="smart-testimonials">
                             <div class="smart-testi-thumb">
-                                <img src="https://via.placeholder.com/700x450" class="img-fluid" alt="" />
+                                <figure class="Reveal-hotel-wrap">
+                                    <img src="nedmin/dimg/whatPeopleSay/c.png" class="img-fluid" alt="" />
+
+                                </figure>
                                 <span class="cipt bg-danger"><i class="fas fa-quote-left"></i></i></span>
                             </div>
                             <div class="smart-testimonials-content">
@@ -232,7 +244,10 @@ require_once "search-banner.php";
                     <div class="item">
                         <div class="smart-testimonials">
                             <div class="smart-testi-thumb">
-                                <img src="https://via.placeholder.com/700x450" class="img-fluid" alt="" />
+                                <figure class="Reveal-hotel-wrap">
+                                    <img src="nedmin/dimg/whatPeopleSay/d.png" class="img-fluid" alt="" />
+
+                                </figure>
                                 <span class="cipt bg-primary"><i class="fas fa-quote-left"></i></i></span>
                             </div>
                             <div class="smart-testimonials-content">

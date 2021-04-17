@@ -1,4 +1,3 @@
-
 <!-- ============================ Footer Start ================================== -->
 <footer class="dark-footer skin-dark-footer">
     <div>
@@ -7,7 +6,7 @@
 
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
-                        
+
                         <p><?php echo $settings['address'] ?><br><?php echo $settings['district'] ?>, <?php echo $settings['province'] ?></p>
                         <ul class="footer-bottom-social">
                             <li><a href="<?php echo $settings['facebook'] ?>" target="_blank"><i class="ti-facebook"></i></a></li>
@@ -48,7 +47,7 @@
 
                 <div class="col-lg-2 col-md-4">
                     <div class="footer-widget">
-                    <img src="nedmin/dimg/settings/bilgeton_footer.jpg" class="img-fluid f-logo" alt="" />
+                        <img src="nedmin/dimg/settings/bilgeton_footer.jpg" class="img-fluid f-logo" alt="" />
                     </div>
                 </div>
 
@@ -79,7 +78,7 @@
                 <h4 class="modal-header-title">Giriş <span class="theme-cl">Yapın</span></h4>
                 <div class="login-form">
 
-                    
+
 
                     <form method="post">
 
@@ -147,12 +146,27 @@
 <script src="assets/js/lightbox.js"></script>
 <script src="assets/js/imagesloaded.js"></script>
 <script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/dropzone.js"></script>
 <script src="assets/js/counterup.min.js"></script>
 
 <script src="assets/js/custom.js"></script>
 <!-- ============================================================== -->
 <!-- This page plugins -->
 <!-- ============================================================== -->
+
+<script>
+    Dropzone.options.gallery = {
+        accept: function(file, done) {
+            console.log("uploaded");
+            done();
+        },
+        init: function() {
+            this.on("maxfilesexceeded", function(file) {
+                alert("No more files please!");
+            });
+        }
+    };
+</script>
 
 </body>
 
