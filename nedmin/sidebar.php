@@ -27,13 +27,14 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MENÜLER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="index.php"><i class="fa fa-home"></i>Anasayfa</a></li>
-            <li><a href="users.php"><i class="fa fa-user"></i>Kullanıcılar</a></li>
-            <li><a href="admins.php"><i class="fa fa-user-secret"></i>Yöneticiler</a></li>
-            <li><a href="blog.php"><i class="fa fa-bookmark"></i>Yazılar</a></li>
-            <li><a href="category.php"><i class="fa fa-server"></i>Kategoriler</a></li>
-            <li><a href="settings.php"><i class="fa fa-cog"></i>Ayarlar</a></li>
-            <li><a href="about-us.php"><i class="fa fa-inbox"></i>Hakkımızda</a></li>
+            <li><a href="index.php"><i class="fa fa-home"></i> <span>Anasayfa</span></a></li>
+            <li><a href="todolist.php"><i class="ion ion-clipboard"></i> <span>Yapılacaklar</span></a></li>
+            <li><a href="users.php"><i class="fa fa-user"></i> <span>Kullanıcılar</span></a></li>
+            <li><a href="admins.php"><i class="fa fa-user-secret"></i> <span>Yöneticiler</span></a></li>
+            <li><a href="blog.php"><i class="fa fa-bookmark"></i> <span>Yazılar</span></a></li>
+            <li><a href="category.php"><i class="fa fa-server"></i> <span>Kategoriler</span></a></li>
+            <li><a href="settings.php"><i class="fa fa-cog"></i> <span>Ayarlar</span></a></li>
+            <li><a href="about-us.php"><i class="fa fa-inbox"></i> <span>Hakkımızda</span></a></li>
 
         </ul>
         <!-- /.sidebar-menu -->

@@ -13,7 +13,7 @@
                 <h1 class="big-header-capt capti">Keşfet Öğren Paylaş</h1>
                 <div class="full-search-2 Reveal-search Reveal-search-radius box-style">
                     <div class="Reveal-search-content">
-                        
+
                         <form method="POST" action="search.php">
 
                             <div class="row">
@@ -25,7 +25,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-lg-3 col-md-3 col-sm-12">
                                     <div class="form-group">
                                         <button name="search_blog" class="btn search-btn btn-black">Ara</button>
