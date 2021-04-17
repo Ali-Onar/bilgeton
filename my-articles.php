@@ -39,7 +39,7 @@ if (empty($_SESSION['users'])) {
                                         </div>
                                     </div>
                                     <div class="buttons-to-right">
-                                        <a href="#" class="button gray"><i class="ti-pencil"></i> Düzenle</a>
+                                        <a href="article-edit.php?blogs_id=<?php echo $row['blogs_id']; ?>" class="button gray"><i class="ti-pencil"></i> Düzenle</a>
                                         <a href="#" class="button gray"><i class="ti-trash"></i> Sil</a>
                                     </div>
                                 </li>

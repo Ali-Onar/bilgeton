@@ -134,10 +134,12 @@ class CRUD
             unset($values[$options['file_delete']]);
 
             // parolayı şifrele
+            if (isset($options['password'])) {
             if ($values[$options['password']]) {
                 $values[$options['password']] = md5($values[$options['password']]);
             } else {
                 unset($values[$options['password']]);
+            }
             }
             // valuesExecute ekstra admins_id için
             $columns_id = $values[$options['columns']];
