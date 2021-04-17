@@ -13,7 +13,7 @@
                 <li><a href="article-add.php"><i class="ti-plus"></i>Yazı Ekle</a></li>
                 <li><a href="book-add.php"><i class="ti-pencil-alt"></i>Kitap Ekle</a></li>
                 <li><a href="my-articles.php"><i class="ti-bookmark"></i>Yazılarım</a></li>
-                <li><a href="my-books.php"><i class="ti-bookmark-alt"></i>Okunan Kitaplar</a></li>
+                <li><a href="my-books.php"><i class="ti-bookmark-alt"></i>Kitaplarım</a></li>
                 <!-- <li><a href="dashboard.php"><i class="ti-dashboard"></i>Gösterge Paneli</a></li> -->
 
                 <li><a href="profile-photo.php"><i class="ti-image"></i>Profili Resmi</a></li>

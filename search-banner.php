@@ -40,10 +40,10 @@
                 </div>
                 <div class="popular-cat-list">
                     <ul>
-                        <li><a href="grid-with-sidebar.html">Hotel & Spa</a></li>
-                        <li><a href="grid-with-sidebar.html">Education</a></li>
-                        <li><a href="grid-with-sidebar.html">Shopping</a></li>
-                        <li><a href="grid-with-sidebar.html">Restaurants</a></li>
+                        <li><a href="grid-with-sidebar.html">Yazılım</a></li>
+                        <li><a href="grid-with-sidebar.html">Edebiyat</a></li>
+                        <li><a href="grid-with-sidebar.html">Müzik</a></li>
+                        <li><a href="grid-with-sidebar.html">Haberler</a></li>
                     </ul>
                 </div>
 

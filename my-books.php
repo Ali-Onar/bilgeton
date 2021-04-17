@@ -17,6 +17,22 @@ if (empty($_SESSION['users'])) {
 
                     <div class="Reveal-gravity-list mt-0">
                         <h4>Okuduğum Kitaplar</h4>
+
+                        <?php
+                        if (isset($_GET['booksDelete'])) {
+
+                            $result = $db->delete("books", "books_id", $_GET['books_id']);
+
+                            if ($result['status']) { ?>
+                                <div class="alert alert-success">Silme Başarılı.</div>
+                            <?php
+                            } else { ?>
+                                <div class="alert alert-danger">Silme Başarısız. <?php echo $result['error'] ?></div>
+                        <?php
+                            }
+                        }
+                        ?>
+
                         <ul>
                             <?php
                             $forBlogsUsersID = $_SESSION['users']['users_id'];
@@ -40,7 +56,7 @@ if (empty($_SESSION['users'])) {
                                     </div>
                                     <div class="buttons-to-right">
                                         <a href="book-edit.php?books_id=<?php echo $row['books_id']; ?>" class="button gray"><i class="ti-pencil"></i> Düzenle</a>
-                                        <a href="#" class="button gray"><i class="ti-trash"></i> Sil</a>
+                                        <a href="my-books.php?booksDelete=true&books_id=<?php echo $row['books_id']; ?>" class="button gray"><i class="ti-trash"></i> Sil</a>
                                     </div>
                                 </li>
 
