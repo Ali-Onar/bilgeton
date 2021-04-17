@@ -17,7 +17,7 @@ if (empty($_SESSION['users'])) {
 
             <div class="col-lg-9 col-md-8 col-sm-12">
                 <div class="dashboard-wraper">
-
+                    <h4>Hesabım</h4>
                     <?php
                     if (isset($_POST['users_update'])) {
                         $result = $db->orderUpdate('users', $_POST, [
@@ -41,7 +41,7 @@ if (empty($_SESSION['users'])) {
                     <form method="POST" enctype="multipart/form-data">
                         <!-- Basic Information -->
                         <div class="form-submit">
-                            <h4>Hesabım</h4>
+
                             <div class="submit-section">
                                 <div class="form-row">
 

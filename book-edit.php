@@ -11,22 +11,24 @@ if (empty($_SESSION['users'])) {
     <div class="container-fluid">
         <div class="row">
             <?php require_once 'profile-sidebar.php'; ?>
+
             <div class="col-lg-9 col-md-8 col-sm-12">
                 <div class="add-listing-form form-submit">
 
                     <!-- general information -->
                     <div class="tr-single-box">
                         <div class="tr-single-header">
-                            <h4>Kitap Ekle</h4>
+                            <h4><i class="ti-medall-alt"></i> Kitap Düzenle</h4>
                         </div>
 
                         <div class="Reveal-other-body">
 
                             <?php
-                            if (isset($_POST['books_insert'])) {
-                                $result = $db->insert('books', $_POST, [
-                                    "form_name" => "books_insert",
+                            if (isset($_POST['books_update'])) {
+                                $result = $db->update('books', $_POST, [
+                                    "form_name" => "books_update",
                                     "file_name" => "books_file",
+                                    "columns" => "books_id"
 
                                 ]);
 
@@ -38,22 +40,28 @@ if (empty($_SESSION['users'])) {
                             <?php
                                 }
                             }
+
+                            $sql = $db->wread("books", "books_id", $_GET['books_id']);
+                            $row = $sql->fetch(PDO::FETCH_ASSOC);
+
                             ?>
 
-                            <form method="POST" enctype="multipart/form-data">
+                            <form method="POST">
 
                                 <div class="form-group">
                                     <label>Kitap İsmi*</label>
-                                    <input class="form-control" required="" type="text" name="books_name">
+                                    <input class="form-control" required="" type="text" value="<?php echo $row['books_name'] ?>" name="books_name">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Bitiş Tarihi*</label>
-                                    <input class="form-control" required="" type="date" name="books_time">
+                                    <input class="form-control" required="" type="text" value="<?php echo $row['books_time']; ?>" name="books_time">
                                 </div>
 
+                                <input type="hidden" name="books_id" value="<?php echo $row['books_id'] ?>">
                                 <input type="hidden" name="users_id" value="<?php echo $_SESSION['users']['users_id'] ?>">
-                                <button class="btn btn-theme" type="submit" name="books_insert">Kitap Ekle</button>
+
+                                <button class="btn btn-theme" type="submit" name="books_update">Düzenlemeyi Kaydet</button>
 
                             </form>
 

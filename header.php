@@ -32,8 +32,8 @@ if (isset($_SESSION['users']['users_id'])) {
 
     <!-- Custom Color Option -->
     <link href="assets/css/colors.css" rel="stylesheet">
-      <!-- CKEditör -->
-  <script src="http://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <!-- CKEditör -->
+    <script src="http://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
 </head>
 
@@ -102,6 +102,8 @@ if (isset($_SESSION['users']['users_id'])) {
 
                                             <a href="users/<?php echo $db->seo($row['users_slug']); ?>"><i class="ti-user"></i>Profil</a>
                                             <a href="profile-edit.php"><i class="ti-pencil"></i>Profili Düzenle</a>
+                                            <a href="my-articles.php"><i class="ti-bookmark"></i>Yazı Listem</a>
+                                            <a href="my-books.php"><i class="ti-bookmark-alt"></i>Kitap Listem</a>
                                             <a href="logout.php"><i class="ti-power-off"></i>Çıkış Yap</a>
                                         </div>
                                     </div>
@@ -116,9 +118,6 @@ if (isset($_SESSION['users']['users_id'])) {
                                     </a>
                                 </li>
                             <?php } ?>
-
-                            
-
 
                         </ul>
                     </div>

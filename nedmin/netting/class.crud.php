@@ -131,8 +131,9 @@ class CRUD
 
             }
             // Eski dosya değerini sil
-            unset($values[$options['file_delete']]);
-
+            if (isset($options['file_delete'])) {
+                unset($values[$options['file_delete']]);
+            }
             // parolayı şifrele
             if (isset($options['password'])) {
                 if ($values[$options['password']]) {

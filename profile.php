@@ -193,7 +193,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 
 									while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
 									?>
-										<li><?php echo $row['books_name'] ?><span><?php echo $db->tDate($row['books_time'], ['date' => TRUE]); ?></span></li>
+										<li><?php echo $row['books_name'] ?><span><?php echo $row['books_time']; ?></span></li>
 									<?php } ?>
 								</ul>
 							</div>

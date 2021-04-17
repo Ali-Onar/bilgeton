@@ -11,6 +11,7 @@ if (empty($_SESSION['users'])) {
     <div class="container-fluid">
         <div class="row">
             <?php require_once 'profile-sidebar.php'; ?>
+
             <div class="col-lg-9 col-md-8 col-sm-12">
                 <div class="Reveal-dashboard-wrapers">
 
@@ -32,13 +33,13 @@ if (empty($_SESSION['users'])) {
 
                                         <div class="Reveal-Reveal-box-listing-content">
                                             <div class="inner">
-
                                                 <span><?php echo $row['books_name'] ?></span>
                                             </div>
+
                                         </div>
                                     </div>
                                     <div class="buttons-to-right">
-                                        <a href="#" class="button gray"><i class="ti-pencil"></i> Düzenle</a>
+                                        <a href="book-edit.php?books_id=<?php echo $row['books_id']; ?>" class="button gray"><i class="ti-pencil"></i> Düzenle</a>
                                         <a href="#" class="button gray"><i class="ti-trash"></i> Sil</a>
                                     </div>
                                 </li>
