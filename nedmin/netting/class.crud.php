@@ -135,11 +135,11 @@ class CRUD
 
             // parolayı şifrele
             if (isset($options['password'])) {
-            if ($values[$options['password']]) {
-                $values[$options['password']] = md5($values[$options['password']]);
-            } else {
-                unset($values[$options['password']]);
-            }
+                if ($values[$options['password']]) {
+                    $values[$options['password']] = md5($values[$options['password']]);
+                } else {
+                    unset($values[$options['password']]);
+                }
             }
             // valuesExecute ekstra admins_id için
             $columns_id = $values[$options['columns']];
@@ -215,11 +215,11 @@ class CRUD
 
 
     // Silme İşlemleri (admins, users)
-    public function delete($table, $columns, $values, $fileName = NULL)
+    public function delete($table, $columns, $values, $fileName = null, $front = null)
     {
         try {
             if (!empty($fileName)) {
-                unlink("dimg/$table/" . $fileName);
+                unlink($front . "dimg/" . $table . "/" . $fileName);
             }
             $stmt = $this->db->prepare("DELETE FROM $table WHERE $columns=?");
             $stmt->execute([htmlspecialchars($values)]);
