@@ -386,6 +386,38 @@ class CRUD
         }
     }
 
+    public function changePassword($oldPassword, $newPassword, $newPassword2)
+    {
+        try {
+
+            $oldPassword = md5($oldPassword);
+
+            $stmt = $this->db->prepare("SELECT * FROM users WHERE users_password=:users_password");
+            $stmt->execute(['users_password' => $oldPassword]);
+
+            if ($stmt->rowCount() == 0) {
+                throw new Exception('Eski parola hatalı!');
+            }
+
+            if ($newPassword == $newPassword2) {
+                if (strlen($newPassword >= 6)) {
+                    $newPassword = md5($newPassword);
+
+                    $stmt = $this->db->prepare("UPDATE users SET users_password=:users_password WHERE users_id={$_SESSION['users']['users_id']}");
+                    $stmt->execute(['users_password' => $newPassword]);
+                } else {
+                    throw new Exception('Parola 6 haneden küçük olamaz!');
+                }
+            } else {
+                throw new Exception('Parolalar uyuşmuyor!');
+            }
+
+            return ['status' => TRUE];
+        } catch (Exception $e) {
+            return ['status' => FALSE, 'error' => $e->getMessage()];
+        }
+    }
+
     // veri okuma
     // public function read($table)
     // {

@@ -19,7 +19,7 @@
                 <li><a href="profile-photo.php"><i class="ti-image"></i>Profili Resmi</a></li>
                 <!-- <li><a href="favories.php"><i class="ti-heart"></i>Favoriler</a></li> -->
                 <li><a href="change-password.php"><i class="ti-unlock"></i>Parolamı Değiştir</a></li>
-                <li><a href="#"><i class="ti-power-off"></i>Güvenli Çıkış</a></li>
+                <li><a href="logout.php"><i class="ti-power-off"></i>Güvenli Çıkış</a></li>
             </ul>
         </div>
 

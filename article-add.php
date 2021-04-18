@@ -30,7 +30,7 @@ if (empty($_SESSION['users'])) {
                                     "file_name" => "blogs_file",
                                     "slug" => "blogs_slug",
                                     "title" => "blogs_title"
-                                    
+
                                 ]);
 
                                 if ($result['status']) { ?>
@@ -54,29 +54,16 @@ if (empty($_SESSION['users'])) {
                                     <label>Yazı Başlığı*</label>
                                     <input class="form-control" required="" type="text" name="blogs_title">
                                 </div>
-
-                                <div class="form-group">
-                                    <div class="form-group">
-                                        <label>Kategori</label>
-                                        <select id="list-category" required="" class="form-control" name="category_id">
-                                            <option value="">&nbsp;</option>
-                                            <option value="1">Cafe & Restaurant</option>
-                                            <option value="2">Businesses</option>
-                                            <option value="3">Education</option>
-                                            <option value="4">Sport & Gym</option>
-                                            <option value="5">Hotel & Villa</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Etiket</label>
-                                    <input class="form-control" required="" type="text" name="blogs_tag" placeholder="Etiketleri virgül ile ayırınız...">
-                                </div>
                                 <div class="form-group">
                                     <label>İçerik</label>
                                     <textarea id="blogs_content" class="form-control" name="blogs_content"></textarea>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Kategori</label>
+                                    <input class="form-control" required="" type="text" name="blogs_tag" placeholder="Kategorileri virgül ile ayırınız...">
+                                </div>
+
 
                                 <input type="hidden" name="users_id" value="<?php echo $_SESSION['users']['users_id'] ?>">
                                 <button class="btn btn-theme" type="submit" name="blogs_insert">Yazı Ekle</button>
