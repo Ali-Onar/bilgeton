@@ -43,6 +43,15 @@ if (empty($_SESSION['users'])) {
                             }
                             ?>
 
+                            <?php
+                            if (isset($_POST['blogs_tag'])) {
+                                $tags = $_POST['blogs_tag'];
+
+                                $stmtTags = $db->qsql('INSERT INTO tags SET tags_name =:tags_name', 'tags_name', $tags);
+                                
+                            }
+                            ?>
+
                             <form method="POST" enctype="multipart/form-data">
 
                                 <div class="form-group">
@@ -66,7 +75,6 @@ if (empty($_SESSION['users'])) {
                                             <?php
 
                                             $stmtCategory = $db->qsql("SELECT * FROM category order by category_id ASC");
-                                            $stmtCategory->execute();
 
                                             while ($rowCategory = $stmtCategory->fetch(PDO::FETCH_ASSOC)) {
                                             ?>

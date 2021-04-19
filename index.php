@@ -11,6 +11,7 @@ require_once "search-banner.php";
                 <?php
                 $sql = $db->read("category", [
                     "columns_sort" => "DESC",
+                    "columns_name" => "category_slug",
                     "limit" => 6
                 ]);
                 while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
@@ -77,7 +78,7 @@ require_once "search-banner.php";
 
 
                         <div class="Reveal-blog-info">
-                            <span class="post-date"><i class="ti-user"></i><?php echo $row['users_name']; ?></span>
+                            <span class="post-date"><i class="ti-user"></i><a href="users/<?php echo $db->seo($row['users_slug']); ?>"><?php echo $row['users_name']; ?></a></span>
                         </div>
 
                         <div class="Reveal-blog-body">

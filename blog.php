@@ -25,7 +25,7 @@
                                 <div class="form-group">
                                     <div class="input-with-icon">
                                         <input type="text" class="form-control" name="search_name" placeholder="Aranacak kelimeyi yazın.">
-                                        
+
                                         <i class="ti-search"></i>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
 
 
                                             <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 100) ?>...</p>
-                                            <span class="post-date"><i class="ti-user"></i><?php echo $row['users_name'] ?></span>
+                                            <span class="post-date"><i class="ti-user"></i><a href="users/<?php echo $db->seo($row['users_slug']); ?>"><?php echo $row['users_name'] ?></a></span>
                                             <div class="Reveal-listing-shot-info rating">
                                                 <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>" class="bl-continue">Devamını Oku</a>
                                             </div>

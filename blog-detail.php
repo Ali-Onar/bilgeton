@@ -43,9 +43,13 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                             <div class="post-tags">
                                 <h4 class="pbm-title">İlgili Etiketler</h4>
                                 <ul class="list">
-                                    <li><a href="#">organic</a></li>
-                                    <li><a href="#">Foods</a></li>
-                                    <li><a href="#">tasty</a></li>
+                                    <?php
+                                    $tags = $row['blogs_tag'];
+                                    $tags = explode(',', $tags);
+                                    foreach ($tags as $key => $value) {
+                                        echo "<li>" . $value . "</li>";
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                             <div class="post-share">

@@ -67,7 +67,7 @@ if (isset($_SESSION['users']['users_id'])) {
                     <div class="nav-menus-wrapper">
                         <ul class="nav-menu">
 
-                            <li class="active"><a href="index.php">Anasayfa</a></li>
+                            <li><a href="index.php">Anasayfa</a></li>
                             <li><a href="blog.php">Blog</a></li>
                             <li><a href="users.php">Yazarlar</a></li>
                             <li><a href="category.php">Kategoriler</a></li>

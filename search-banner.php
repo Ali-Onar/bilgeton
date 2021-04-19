@@ -40,10 +40,19 @@
                 </div>
                 <div class="popular-cat-list">
                     <ul>
-                        <li><a href="grid-with-sidebar.html">Yazılım</a></li>
-                        <li><a href="grid-with-sidebar.html">Edebiyat</a></li>
-                        <li><a href="grid-with-sidebar.html">Müzik</a></li>
-                        <li><a href="grid-with-sidebar.html">Haberler</a></li>
+
+                        <?php
+                        $sql = $db->read("category", [
+                            "columns_sort" => "DESC",
+                            "columns_name" => "category_slug",
+                            "limit" => 4
+                        ]);
+                        while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
+
+                            <li><a href="category-details/<?php echo $db->seo($row['category_slug']); ?>"><?php echo $row['category_name'] ?></a></li>
+
+                        <?php } ?>
                     </ul>
                 </div>
 
