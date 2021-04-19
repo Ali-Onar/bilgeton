@@ -45,8 +45,10 @@ foreach ($row as $key) {
                                     ["slug" => "users_slug"]
                                 );
 
-                                if ($result['status']) { ?>
-                                    <div class="alert alert-success">Kayıt Başarılı.</div>
+                                if ($result['status']) { 
+                                    Header("Location: login.php");
+                                    ?>
+                                    
                                 <?php
                                 } else { ?>
                                     <div class="alert alert-danger"><?php echo $result['error']; ?></div>

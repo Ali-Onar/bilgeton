@@ -60,8 +60,26 @@ if (empty($_SESSION['users'])) {
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Kategori</label>
-                                    <input class="form-control" required="" type="text" name="blogs_tag" placeholder="Kategorileri virgül ile ayırınız...">
+                                    <div class="form-group">
+                                        <label>Kategori*</label>
+                                        <select id="list-category" required="" class="form-control" name="category_id">
+                                            <?php
+
+                                            $stmtCategory = $db->qsql("SELECT * FROM category order by category_id ASC");
+                                            $stmtCategory->execute();
+
+                                            while ($rowCategory = $stmtCategory->fetch(PDO::FETCH_ASSOC)) {
+                                            ?>
+                                                <option value="<?php echo $rowCategory['category_id'] ?>"><?php echo $rowCategory['category_name'] ?></option>
+
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Etiket</label>
+                                    <input class="form-control" required="" type="text" name="blogs_tag" placeholder="Etiketleri virgül ile ayırınız...">
                                 </div>
 
 
