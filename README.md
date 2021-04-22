@@ -1,8 +1,9 @@
-# bilgeton
+
+
+## Bilgeton Yayında!
+https://www.bilgeton.com
 
 Bu proje Kodluyoruz & Vivense PHP Yetenek Eğitim Kampı için hazırlanmaktadır. Proje yayına alındıktan sonra kaynak kodları burada yer alacaktır. Proje, geliştiricilerin destek vermesine açık olacaktır.
-
-[bilgeton-sunum](https://hackmd.io/Cpndt9rtSJaDrDozy3ybZg)
 
 ## Bilgeton Hakkında:
 
