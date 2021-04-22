@@ -23,9 +23,3 @@ Bu proje Kodluyoruz & Vivense PHP Yetenek Eğitim Kampı için hazırlanmaktadı
 - Veritabanı: MySQL,
 - Sürükle Bırak İşlemleri: Jquery UI
 - Sürükle Bırak İşlemlerinde Veri Gönderimi: Ajax
-
-## Hesaplara Giriş
-
-Profil-> bilgeton/login.php: test49@gmail.com, 123456
-
-Admin:-> bilgeton/nedmin/login.php: test49, 123456
