@@ -86,11 +86,25 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" id="author-article-tab" data-toggle="pill" href="#author-article" role="tab" aria-controls="author-article" aria-selected="false">Yazılar<span class="author-count">4</span></a>
+							<a class="nav-link" id="author-article-tab" data-toggle="pill" href="#author-article" role="tab" aria-controls="author-article" aria-selected="false">Yazılar<span class="author-count">
+									<?php
+									$forBlogsUsersID = $row['users_id'];
+									$sqlCount = $db->qsql("SELECT COUNT(blogs_title) as 'totalBlog' FROM blogs where users_id=:users_id", "users_id", $forBlogsUsersID);
+									$rowCount = $sqlCount->fetch(PDO::FETCH_ASSOC);
+									echo $rowCount['totalBlog'];
+									?>
+								</span></a>
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" id="author-listing-tab" data-toggle="pill" href="#author-listing" role="tab" aria-controls="author-listing" aria-selected="false">Okuduğu Kitaplar<span class="author-count">12</span></a>
+							<a class="nav-link" id="author-listing-tab" data-toggle="pill" href="#author-listing" role="tab" aria-controls="author-listing" aria-selected="false">Okuduğu Kitaplar<span class="author-count">
+									<?php
+									$forBlogsUsersID = $row['users_id'];
+									$sqlCount = $db->qsql("SELECT COUNT(books_name) as 'totalBook' FROM books where users_id=:users_id", "users_id", $forBlogsUsersID);
+									$rowCount = $sqlCount->fetch(PDO::FETCH_ASSOC);
+									echo $rowCount['totalBook'];
+									?>
+								</span></a>
 						</li>
 
 						<li class="nav-item">
@@ -215,11 +229,28 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 								<div class="imp-boxes-single-icon"><img src="assets/img/share.svg" width="25" alt="" /></div>
 								<div class="imp-boxes-single-content">
 									<ul>
-										<li><a href="#"><i class="ti-facebook"></i></a></li>
-										<li><a href="#"><i class="ti-twitter"></i></a></li>
-										<li><a href="#"><i class="ti-google"></i></a></li>
-										<li><a href="#"><i class="ti-instagram"></i></a></li>
-										<li><a href="#"><i class="ti-linkedin"></i></a></li>
+										<?php
+
+										$sql = $db->wread("users", "users_slug", $_GET['users_slug']);
+										$row = $sql->fetch(PDO::FETCH_ASSOC);
+
+										?>
+
+										<?php if ($row['users_facebook']) { ?>
+											<li><a href="<?php echo $row['users_facebook'] ?>" target="_blank"><i class="ti-facebook"></i></a></li>
+										<?php }
+										if ($row['users_twitter']) { ?>
+											<li><a href="<?php echo $row['users_twitter'] ?>" target="_blank"><i class="ti-twitter"></i></a></li>
+										<?php }
+										if ($row['users_instagram']) { ?>
+											<li><a href="<?php echo $row['users_instagram'] ?>" target="_blank"><i class="ti-instagram"></i></a></li>
+										<?php }
+										if ($row['users_linkedin']) { ?>
+											<li><a href="<?php echo $row['users_linkedin'] ?>" target="_blank"><i class="ti-linkedin"></i></a></li>
+										<?php }
+										if ($row['users_github']) { ?>
+											<li><a href="<?php echo $row['users_github'] ?>" target="_blank"><i class="ti-github"></i></a></li>
+										<?php } ?>
 									</ul>
 								</div>
 							</div>

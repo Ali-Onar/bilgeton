@@ -114,7 +114,7 @@ require_once 'sidebar.php';
                     if (isset($_POST['settings_update'])) {
                         $result = $db->update('settings', $_POST, [
                             "form_name" => "settings_update",
-                            "dir" => "settings",
+                            "dir" => "dimg/settings",
                             "file_name" => "settings_value",
                             "columns" => "settings_id",
                             "file_delete" => "delete_image"

@@ -43,7 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Özel CSS Dosyası -->
   <link rel="stylesheet" href="css/custom.css">
   <!-- CKEditör -->
-  <script src="http://cdn.ckeditor.com/4.6.2/full-all/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/4.6.2/full-all/ckeditor.js"></script>
   <!--  <script src="bower_components/ckeditor4/ckeditor.js"></script> -->
 
 

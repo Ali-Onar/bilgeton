@@ -3,7 +3,7 @@
 <!-- ============================================================== -->
 
 <!-- ============================ Page Title Start================================== -->
-<div class="image-cover page-title" style="background:url(https://via.placeholder.com/1920x900) no-repeat;" data-overlay="6">
+<div class="image-cover page-title" style="background:url(https://via.placeholder.com/) no-repeat;" data-overlay="6">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">

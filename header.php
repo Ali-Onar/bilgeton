@@ -18,10 +18,10 @@ if (isset($_SESSION['users']['users_id'])) {
     <meta name="description" content="<?php echo $settings['description'] ?>">
     <meta name="keywords" content="<?php echo $settings['keywords'] ?>">
     <meta name="author" content="<?php echo $settings['author'] ?>">
-
+    <link rel="icon" href="nedmin/dimg/settings/<?php echo $settings['icon'] ?>" type="image/gif" sizes="16x16">
     <title><?php echo $settings['title'] ?></title>
 
-    <base href="http://localhost/bilgeton/index.php">
+    <base href="http://localhost/bilgeton/index.php"> 
 
     <!-- All Plugins Css -->
     <link rel="stylesheet" href="assets/css/plugins.css">
@@ -33,7 +33,7 @@ if (isset($_SESSION['users']['users_id'])) {
     <!-- Custom Color Option -->
     <link href="assets/css/colors.css" rel="stylesheet">
     <!-- CKEditör -->
-    <script src="http://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
 </head>
 

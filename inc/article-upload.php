@@ -18,3 +18,6 @@ if (isset($_FILES['upload']['name'])) {
         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($function_number, '$url', '$message');</script>";
     }
 }
+
+
+// $url = 'https://www.bilgeton.com/nedmin/dimg/blogs/' . $new_image_name;

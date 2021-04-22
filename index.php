@@ -63,7 +63,7 @@ require_once "search-banner.php";
             <?php
             $sql = $db->qSql("SELECT blogs.*, users.* 
             FROM blogs INNER JOIN users 
-            ON blogs.users_id=users.users_id order by blogs_must DESC limit 6");
+            ON blogs.users_id=users.users_id order by blogs_time DESC limit 6");
             $say = 1;
             while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
             ?>

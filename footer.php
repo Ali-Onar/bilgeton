@@ -154,19 +154,6 @@
 <!-- This page plugins -->
 <!-- ============================================================== -->
 
-<script>
-    Dropzone.options.gallery = {
-        accept: function(file, done) {
-            console.log("uploaded");
-            done();
-        },
-        init: function() {
-            this.on("maxfilesexceeded", function(file) {
-                alert("No more files please!");
-            });
-        }
-    };
-</script>
 
 </body>
 
