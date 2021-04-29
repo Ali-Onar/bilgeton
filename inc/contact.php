@@ -27,35 +27,41 @@
 
             <div class="col-lg-7 col-md-7">
 
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="form-group">
-                            <label>İsim</label>
-                            <input type="text" class="form-control" placeholder="İsminiz">
+                <?php
+                if (@$_GET['success'] == 'ok') { ?>
+                    <div class="alert alert-success">Mesajınız başarıyla iletildi.</div>
+                <?php } ?>
+
+                <form method="POST" action="inc/contact-post.php">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>İsim*</label>
+                                <input type="text" name="contact_name" required="" class="form-control" placeholder="İsminiz">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>Email*</label>
+                                <input type="email" name="contact_email" required="" class="form-control" placeholder="Mail Adresiniz">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" placeholder="Mail Adresiniz">
-                        </div>
+
+                    <div class="form-group">
+                        <label>Konu*</label>
+                        <input type="text" name="contact_title" required="" class="form-control" placeholder="Konu">
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label>Konu</label>
-                    <input type="text" class="form-control" placeholder="Konu">
-                </div>
+                    <div class="form-group">
+                        <label>Mesaj*</label>
+                        <textarea class="form-control" name="contact_message" required="" placeholder="Mesajınız"></textarea>
+                    </div>
 
-                <div class="form-group">
-                    <label>Mesaj</label>
-                    <textarea class="form-control" placeholder="Mesajınız"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <button class="btn btn-theme" type="submit">Gönder</button>
-                </div>
-
+                    <div class="form-group">
+                        <button class="btn btn-theme" name="contact_send" type="submit">Gönder</button>
+                    </div>
+                </form>
             </div>
 
         </div>

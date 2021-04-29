@@ -13,7 +13,13 @@ if (isset($_FILES['upload']['name'])) {
     if (in_array($extension, $allowed_extension)) {
         move_uploaded_file($file, '../dimg/upload/' . $new_image_name);
         $function_number = $_GET['CKEditorFuncNum'];
-        $url = 'http://localhost/bilgeton/nedmin/dimg/upload/' . $new_image_name;
+
+        if ($_SERVER['HTTP_HOST'] == 'localhost') {
+            $url = 'https://localhost/bilgeton/nedmin/dimg/upload/' . $new_image_name;
+        } else {
+            $url = 'https://www.bilgeton.com/nedmin/dimg/upload/' . $new_image_name;
+        }
+
         $message = '';
         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($function_number, '$url', '$message');</script>";
     }

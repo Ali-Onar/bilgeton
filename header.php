@@ -21,7 +21,11 @@ if (isset($_SESSION['users']['users_id'])) {
     <link rel="icon" href="nedmin/dimg/settings/<?php echo $settings['icon'] ?>" type="image/gif" sizes="16x16">
     <title><?php echo $settings['title'] ?></title>
 
-    <base href="http://localhost/bilgeton/index.php"> 
+    <?php if ($_SERVER['HTTP_HOST'] == 'localhost') { ?>
+        <base href="http://localhost/bilgeton/index.php">
+    <?php } else { ?>
+        <base href="https://www.bilgeton.com/index.php">
+    <?php } ?>
 
     <!-- All Plugins Css -->
     <link rel="stylesheet" href="assets/css/plugins.css">

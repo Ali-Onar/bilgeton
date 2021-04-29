@@ -116,9 +116,7 @@ require_once "search-banner.php";
         <div class="row">
             <div class="col-lg-4 col-md-4">
                 <div class="Reveal-working-step">
-                    <div class="Reveal-icon-wrap">
                         <div class="Reveal-icon-large-box f-light-success"><i class="ti-pencil-alt text-success"></i></div>
-                    </div>
                     <div class="Reveal-working-box-caption">
                         <h4>İstediğin Alanda Makaleni Yaz</h4>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p>
@@ -128,9 +126,7 @@ require_once "search-banner.php";
 
             <div class="col-lg-4 col-md-4">
                 <div class="Reveal-working-step">
-                    <div class="Reveal-icon-wrap">
                         <div class="Reveal-icon-large-box f-light-warning"><i class="ti-book text-warning"></i></div>
-                    </div>
                     <div class="Reveal-working-box-caption">
                         <h4>Kitap Listeni Hazırla</h4>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p>

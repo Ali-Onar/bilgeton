@@ -108,7 +108,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" id="author-hotel-tab" data-toggle="pill" href="#author-hotel" role="tab" aria-controls="author-hotel" aria-selected="false">Sosyal Hesaplar<span class="author-count">0</span></a>
+							<a class="nav-link" id="author-hotel-tab" data-toggle="pill" href="#author-hotel" role="tab" aria-controls="author-hotel" aria-selected="false">Sosyal Hesaplar</a>
 						</li>
 					</ul>
 				</div>
