@@ -77,7 +77,25 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
 
                         <?php
-                        $sql = $db->qSql("SELECT blogs.*, users.* FROM blogs INNER JOIN users ON blogs.users_id=users.users_id order by blogs_time DESC");
+
+                        // pagination - sayfalama baş
+
+                        $sayfada = 6; // sayfada gösterilecek içerik miktarını belirtiyoruz.
+                        $sorgu = $db->qSql("select * from blogs");
+                        $sorgu->execute();
+                        $toplam_icerik = $sorgu->rowCount();
+                        $toplam_sayfa = ceil($toplam_icerik / $sayfada);
+                        // eğer sayfa girilmemişse 1 varsayalım.
+                        $sayfa = isset($_GET['sayfa']) ? (int) $_GET['sayfa'] : 1;
+                        // eğer 1'den küçük bir sayfa sayısı girildiyse 1 yapalım.
+                        if ($sayfa < 1) $sayfa = 1;
+                        // toplam sayfa sayımızdan fazla yazılırsa en son sayfayı varsayalım.
+                        if ($sayfa > $toplam_sayfa) $sayfa = $toplam_sayfa;
+                        $limit = ($sayfa - 1) * $sayfada;
+
+                        // pagination - sayfalama bit
+
+                        $sql = $db->qSql("SELECT blogs.*, users.* FROM blogs INNER JOIN users ON blogs.users_id=users.users_id order by blogs_time DESC limit $limit, $sayfada");
 
                         while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                         ?>
@@ -100,7 +118,8 @@
 
 
 
-                                            <!-- <p class="Reveal-short-descr"> <?php // echo mb_substr($row['blogs_content'], 0, 100) ?>...</p> -->
+                                            <!-- <p class="Reveal-short-descr"> <?php // echo mb_substr($row['blogs_content'], 0, 100) 
+                                                                                ?>...</p> -->
 
                                             <span class="post-date"><i class="ti-user"></i><a href="users/<?php echo $db->seo($row['users_slug']); ?>"><?php echo $row['users_name'] ?></a></span>
                                             <div class="Reveal-listing-shot-info rating">
@@ -113,24 +132,29 @@
 
                         <?php } ?>
 
+                        <div align="right" class="col-md-12">
+                            <ul class="pagination">
 
+                                <?php
+                                $s = 0;
 
-                    </div>
+                                while ($s < $toplam_sayfa) {
+                                    $s++;
+                                    if ($s == $sayfa) { ?>
 
-                    <div class="col-md-12 col-sm-12 mt-3">
-                        <div class="text-center">
+                                        <li><a href="blog?sayfa=<?php echo $s; ?>"><?php echo $s; ?></a></li>
 
-                            <div class="spinner-grow text-danger" role="status">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                            <div class="spinner-grow text-warning" role="status">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                            <div class="spinner-grow text-success" role="status">
-                                <span class="sr-only">Loading...</span>
-                            </div>
+                                    <?php } else { ?>
 
+                                        <li><a href="blog?sayfa=<?php echo $s; ?>"><?php echo $s; ?></a></li>
+
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </ul>
                         </div>
+
                     </div>
 
                 </div>
