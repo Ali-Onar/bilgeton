@@ -63,7 +63,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 					</div>
 
 					<!-- Author List Count -->
-					<div class="author-list-detail">
+					<!-- <div class="author-list-detail">
 
 						<ul class="author-list-counter">
 							<li><span>76</span>Saved</li>
@@ -71,7 +71,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 							<li><span>106</span>Posts</li>
 						</ul>
 
-					</div>
+					</div> -->
 
 				</div>
 			</div>

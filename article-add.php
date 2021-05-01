@@ -5,6 +5,15 @@ if (empty($_SESSION['users'])) {
     exit;
 }
 
+$sqlBlogs = $db->read("blogs");
+$rowBlogs = $sqlBlogs->fetchAll(PDO::FETCH_ASSOC);
+
+$blogs_slugs = [];
+foreach ($rowBlogs as $key) {
+    array_push($blogs_slugs, $key['blogs_slug']);
+}
+// print_r($blogs_slugs);
+
 ?>
 
 <section class="gray">
@@ -30,8 +39,8 @@ if (empty($_SESSION['users'])) {
                                     "file_name" => "blogs_file",
                                     "slug" => "blogs_slug",
                                     "title" => "blogs_title"
-
-                                ]);
+                                ], 
+                                $blogs_slugs);
 
                                 if ($result['status']) { ?>
                                     <div class="alert alert-success">Kayıt Başarılı.</div>
@@ -48,7 +57,6 @@ if (empty($_SESSION['users'])) {
                                 $tags = $_POST['blogs_tag'];
 
                                 $stmtTags = $db->qsql('INSERT INTO tags SET tags_name =:tags_name', 'tags_name', $tags);
-                                
                             }
                             ?>
 

@@ -5,6 +5,14 @@ if (empty($_SESSION['users'])) {
     exit;
 }
 
+$sqlBlogs = $db->read("blogs");
+$rowBlogs = $sqlBlogs->fetchAll(PDO::FETCH_ASSOC);
+
+$blogs_slugs = [];
+foreach ($rowBlogs as $key) {
+    array_push($blogs_slugs, $key['blogs_slug']);
+}
+
 ?>
 
 <section class="gray">
@@ -29,8 +37,10 @@ if (empty($_SESSION['users'])) {
                                     "dir" => "nedmin/dimg/blogs",
                                     "file_name" => "blogs_file",
                                     "columns" => "blogs_id",
-                                    "file_delete" => "delete_image"
-                                ]);
+                                    "file_delete" => "delete_image",
+                                    "slug" => "blogs_slug",
+                                    "title" => "blogs_title"
+                                ], $blogs_slugs);
 
                                 if ($result['status']) { ?>
                                     <div class="alert alert-success">Kayıt Başarılı.</div>

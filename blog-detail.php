@@ -52,6 +52,8 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                                     ?>
                                 </ul>
                             </div>
+
+                            <!--
                             <div class="post-share">
                                 <h4 class="pbm-title">Paylaş</h4>
                                 <ul class="list">
@@ -62,7 +64,11 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                                     <li><a href="#"><i class="fab fa-tumblr"></i></a></li>
                                 </ul>
                             </div>
+                            -->
+
                         </div>
+
+                        <!--
                         <div class="single-post-pagination">
                             <div class="prev-post">
                                 <a href="#">
@@ -84,12 +90,13 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                                 </a>
                             </div>
                         </div>
-
+                        
+                        -->
                     </div>
                 </div>
 
                 <!-- Author Detail -->
-                <div class="blog-details single-post-item format-standard">
+                <!-- <div class="blog-details single-post-item format-standard">
 
                     <div class="posts-author">
                         <span class="img"><img class="img-fluid" src="https://via.placeholder.com/400x400" alt=""></span>
@@ -106,7 +113,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                             exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
                     </div>
 
-                </div>
+                </div> -->
 
 
 

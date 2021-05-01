@@ -6,14 +6,16 @@
 $sql = $db->read("users");
 $row = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-
+$users_names = [];
+$users_mails = [];
 foreach ($row as $key) {
 
-    $rows['users_name'] = $key['users_name'];
-    $rows['users_mail'] = $key['users_mail'];
-    
-    //echo $rows['users_name'] . "------>>>>" . $key['users_mail']."<br>";
+    array_push($users_names, $key['users_name']);
+    array_push($users_mails, $key['users_mail']);
 }
+
+// print_r($users_names);
+// print_r($users_mails);
 ?>
 
 <!-- ============================ Login Start================================== -->
@@ -33,15 +35,13 @@ foreach ($row as $key) {
                             // Form işlemleri
                             if (isset($_POST['users_register'])) {
 
-
-
                                 $result = $db->usersRegister(
                                     htmlspecialchars($_POST['users_name']),
                                     htmlspecialchars($_POST['users_mail']),
                                     htmlspecialchars($_POST['users_password1']),
                                     htmlspecialchars($_POST['users_password2']),
-                                    htmlspecialchars($rows['users_name']),
-                                    htmlspecialchars($rows['users_mail']),
+                                    $users_names, 
+                                    $users_mails,
                                     ["slug" => "users_slug"]
                                 );
 

@@ -44,15 +44,24 @@ class CRUD
     }
 
     // Veri Ekleme Metodu
-    public function insert($table, $values, $options = [])
+    public function insert($table, $values, $options = [], $slugs = null)
     {
         try {
+
+
 
             if (isset($options['slug'])) {
                 if (empty($values[$options['slug']])) {
                     $values[$options['slug']] = $this->seo($values[$options['title']]);
                 } else {
                     $values[$options['slug']] = $this->seo($values[$options['slug']]);
+                }
+            }
+
+            foreach ($slugs as $slug) {
+                if ($values[$options['slug']] == $slug) {
+                    $values[$options['slug']] = $values[$options['slug']] . "-" . rand();
+                    break;
                 }
             }
 
@@ -93,7 +102,7 @@ class CRUD
         }
     }
     // Veri Güncelleme Metodu
-    public function update($table, $values, $options = [])
+    public function update($table, $values, $options = [], $slugs = null)
     {
         try {
 
@@ -102,6 +111,13 @@ class CRUD
                     $values[$options['slug']] = $this->seo($values[$options['title']]);
                 } else {
                     $values[$options['slug']] = $this->seo($values[$options['slug']]);
+                }
+            }
+
+            foreach ($slugs as $slug) {
+                if ($values[$options['slug']] == $slug) {
+                    $values[$options['slug']] = $values[$options['slug']] . "-" . rand();
+                    break;
                 }
             }
 
@@ -352,14 +368,21 @@ class CRUD
         }
     }
 
-    public function usersRegister($users_name, $users_mail, $users_password1, $users_password2, $row_user, $row_mail, $options)
+    public function usersRegister($users_name, $users_mail, $users_password1, $users_password2, $row_users, $row_mails, $options)
     {
         try {
 
-
-            if ($users_name == $row_user || $users_mail == $row_mail) {
-                throw new Exception('İsim veya mail kullanılıyor, kayıt başarısız..!');
+            foreach ($row_users as $row_user) {
+                if ($users_name == $row_user) {
+                    throw new Exception('İsim kullanılıyor, kayıt başarısız..!');
+                }
             }
+            foreach ($row_mails as $row_mail) {
+                if ($users_mail == $row_mail) {
+                    throw new Exception('Mail kullanılıyor, kayıt başarısız..!');
+                }
+            }
+
 
             if ($users_password1 != $users_password2) {
                 throw new Exception('Parolalar uyuşmuyor, kayıt başarısız...');
