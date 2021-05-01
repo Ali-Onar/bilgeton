@@ -83,8 +83,9 @@ require_once "search-banner.php";
 
                         <div class="Reveal-blog-body">
                             <h4 class="bl-title"><a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>"><?php echo $row['blogs_title'] ?></a></h4>
-                            <p><?php echo mb_substr($row['blogs_content'], 0, 200) ?>...</p>
-                            <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>" class="bl-continue">Devamını Oku</a>
+                            <!-- <p><?php // echo mb_substr($row['blogs_content'], 0, 200) ?>...</p> -->
+                           
+                            <!-- <a href="bloglar/<?php // echo $db->seo($row['blogs_slug']); ?>" class="bl-continue">Devamını Oku</a> -->
                         </div>
                     </div>
                 </div>
@@ -269,7 +270,7 @@ require_once "search-banner.php";
 
 
 
-<!-- ============================ Call To Action Start ================================== -->
+<!-- ============================ Call To Action Start ==================================
 <section class="call-to-act" style="background:#e4074e url(assets/img/landing-bg.png) no-repeat">
     <div class="container">
         <div class="row justify-content-center">
@@ -289,7 +290,7 @@ require_once "search-banner.php";
         </div>
     </div>
 </section>
-<!-- ============================ Call To Action End ================================== -->
+============================ Call To Action End ================================== -->
 
 
 <?php

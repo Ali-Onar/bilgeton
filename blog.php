@@ -100,7 +100,8 @@
 
 
 
-                                            <p class="Reveal-short-descr"><?php echo mb_substr($row['blogs_content'], 0, 100) ?>...</p>
+                                            <!-- <p class="Reveal-short-descr"> <?php // echo mb_substr($row['blogs_content'], 0, 100) ?>...</p> -->
+
                                             <span class="post-date"><i class="ti-user"></i><a href="users/<?php echo $db->seo($row['users_slug']); ?>"><?php echo $row['users_name'] ?></a></span>
                                             <div class="Reveal-listing-shot-info rating">
                                                 <a href="bloglar/<?php echo $db->seo($row['blogs_slug']); ?>" class="bl-continue">Devamını Oku</a>
